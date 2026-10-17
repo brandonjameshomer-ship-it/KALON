@@ -28,7 +28,6 @@ docker/       Dockerfile (nginx:alpine serving app/), nginx.conf, docker-compose
 docs/         Handoff notes from the prototype export.
 knowledge/    Committed code graph: knowledge/code_graph.db.
 .githooks/    Git hooks. Install once per clone: sh .githooks/install.sh
-source/       Old build pipeline from the export. Superseded by src/. Do not edit.
 ```
 
 ## Run
