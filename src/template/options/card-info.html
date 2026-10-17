@@ -1,0 +1,17 @@
+<div style="position: absolute; left: {{o.ix}}px; top: {{o.iy}}px; width: {{o.iw}}px; height: {{o.ih}}px; box-sizing: border-box; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; background: #fbfaf7; border: 1px solid #dcd7cc; border-top: 0; border-radius: 0 0 14px 14px; transform: {{o.itf}}; opacity: {{o.iop}}; visibility: {{o.ivis}}; transition: {{o.itrans}}">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5d584f">Design {{o.num}}</span>
+<span style="height: 24px; padding: 0 10px; display: {{o.chkDisp}}; align-items: center; gap: 6px; border-radius: 12px; background: {{o.chkBg}}; color: {{o.chkFg}}; font-size: 12px; font-weight: 600">{{o.chkLabel}}</span>
+</div>
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1">{{o.title}}</h2>
+<p style="margin: 0; font-size: 13px; line-height: 1.45; color: #4a463f">{{o.spec}}</p>
+<ul style="margin: 4px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; flex-grow: 1">
+<sc-for list="{{o.why}}" as="w" hint-placeholder-count="4">
+<li style="display: flex; gap: 9px; font-size: 13px; line-height: 1.4; color: #2f2c27">
+<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" style="flex-shrink: 0; margin-top: 3px"><path d="M6 1 L7.2 4.8 L11 6 L7.2 7.2 L6 11 L4.8 7.2 L1 6 L4.8 4.8 Z" style="fill: {{accent}}"></path></svg>
+<span>{{w.text}}</span>
+</li>
+</sc-for>
+</ul>
+<button type="button" onClick="{{o.choose}}" style="height: 46px; border: 1px solid {{accent}}; border-radius: 10px; background: {{accent}}; color: #ffffff; font-size: 14px; font-weight: 600; cursor: pointer">Choose this design</button>
+</div>

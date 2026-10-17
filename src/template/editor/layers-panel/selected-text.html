@@ -1,0 +1,11 @@
+<span style="font-size: 12px; color: #5d584f">Typeface</span>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{fontPills}}" as="fp" hint-placeholder-count="6">
+<button type="button" onClick="{{fp.pick}}" aria-pressed="{{fp.pressed}}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border: 1px solid {{fp.bd}}; border-radius: 8px; background: {{fp.bg}}; color: #1e1c19; cursor: pointer">
+<span style="font-family: {{fp.family}}; font-style: {{fp.fstyle}}; font-size: 19px; line-height: 1">Aa</span>
+<span style="font-size: 10px; color: #3d3a34">{{fp.label}}</span>
+</button>
+</sc-for>
+</div>
+<!--@slider {"label": "Letter height (capitals)", "readout": "selHtLabel", "value": "selHt", "on_change": "onHt", "min": "0.5", "max": "4", "step": "0.05", "aria_label": "Letter height in inches"}-->
+<!--@slider {"label": "Letter spacing", "readout": "selTrackLabel", "value": "selTrack", "on_change": "onTrack", "min": "0", "max": "0.4", "step": "0.01", "aria_label": "Letter spacing in em"}-->

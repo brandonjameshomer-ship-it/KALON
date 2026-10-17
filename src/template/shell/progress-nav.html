@@ -1,0 +1,11 @@
+<nav aria-label="Progress" style="display: flex; justify-content: center; align-items: center; gap: 6px">
+<sc-for list="{{steps}}" as="sp" hint-placeholder-count="4">
+<div style="display: flex; align-items: center; gap: 6px">
+<button type="button" class="hs-step" onClick="{{sp.go}}" disabled="{{sp.disabled}}" aria-current="{{sp.current}}" aria-label="{{sp.aria}}" title="{{sp.tip}}" style="height: 40px; padding: 0 12px 0 7px; display: flex; align-items: center; gap: 8px; border: 0; border-radius: 20px; cursor: {{sp.cursor}}">
+<span style="width: 26px; height: 26px; box-sizing: border-box; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; background: {{sp.numBg}}; color: {{sp.numFg}}; border: 1.5px solid {{sp.numBd}}">{{sp.n}}</span>
+<span style="font-size: 14px; font-weight: {{sp.weight}}; color: {{sp.fg}}; text-decoration: {{sp.deco}}; text-underline-offset: 3px">{{sp.label}}</span>
+</button>
+<span style="display: {{sp.lineDisp}}; width: 22px; height: 1px; background: #bdb6a8"></span>
+</div>
+</sc-for>
+</nav>

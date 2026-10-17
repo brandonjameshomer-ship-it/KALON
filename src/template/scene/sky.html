@@ -1,0 +1,77 @@
+<svg viewBox="0 0 1440 836" width="1440" height="836" style="position: absolute; left: 0; top: 0; display: block">
+<defs>
+<linearGradient id="lpSky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" style="stop-color: {{scn.c.sky1}}"></stop>
+<stop offset="0.62" style="stop-color: {{scn.c.sky2}}"></stop>
+<stop offset="1" style="stop-color: {{scn.c.sky3}}"></stop>
+</linearGradient>
+<radialGradient id="lpMw" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0" style="stop-color: #c9d2f4; stop-opacity: 0.16"></stop>
+<stop offset="0.5" style="stop-color: #b3bde8; stop-opacity: 0.07"></stop>
+<stop offset="1" style="stop-color: #b3bde8; stop-opacity: 0"></stop>
+</radialGradient>
+<linearGradient id="lpAurP" x1="0" y1="1" x2="0" y2="0">
+<stop offset="0" style="stop-color: #8ff5c8; stop-opacity: 0"></stop>
+<stop offset="0.1" style="stop-color: #8ff5c8; stop-opacity: 0.5"></stop>
+<stop offset="0.45" style="stop-color: #6fd6c4; stop-opacity: 0.22"></stop>
+<stop offset="0.8" style="stop-color: #a58ff0; stop-opacity: 0.08"></stop>
+<stop offset="1" style="stop-color: #a58ff0; stop-opacity: 0"></stop>
+</linearGradient>
+<linearGradient id="lpWisp" x1="0" y1="1" x2="0" y2="0">
+<stop offset="0" style="stop-color: #efece6; stop-opacity: 0.7"></stop>
+<stop offset="0.6" style="stop-color: #efece6; stop-opacity: 0.3"></stop>
+<stop offset="1" style="stop-color: #efece6; stop-opacity: 0"></stop>
+</linearGradient>
+<radialGradient id="lpMoon" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0" style="stop-color: #dfe7ff; stop-opacity: 0.55"></stop>
+<stop offset="0.35" style="stop-color: #b9c8f5; stop-opacity: 0.18"></stop>
+<stop offset="1" style="stop-color: #b9c8f5; stop-opacity: 0"></stop>
+</radialGradient>
+<radialGradient id="lpSun" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0" style="stop-color: {{scn.c.sun}}; stop-opacity: 0.95"></stop>
+<stop offset="0.4" style="stop-color: {{scn.c.sun}}; stop-opacity: 0.38"></stop>
+<stop offset="1" style="stop-color: {{scn.c.sun}}; stop-opacity: 0"></stop>
+</radialGradient>
+</defs>
+<rect x="0" y="0" width="1440" height="836" style="fill: url(#lpSky)"></rect>
+<g style="display: {{scn.nightDisp}}">
+<g style="opacity: {{scn.mwOp}}">
+<!--@milky-way-glows {"count": 5}-->
+<path d="{{scn.mwDotsD}}" style="fill: #f2f0ff; opacity: 0.5"></path>
+<path d="{{scn.mwBrightD}}" style="fill: #ffffff; opacity: 0.85"></path>
+</g>
+</g>
+<g style="opacity: {{scn.sunOp}}"><circle cx="{{scn.sunX}}" cy="{{scn.sunY}}" r="330" style="fill: url(#lpSun)"></circle></g>
+<path d="{{scn.skyD}}" style="fill: #ffffff; opacity: {{scn.skyOp}}"></path>
+<path d="{{scn.skyWarmD}}" style="fill: {{scn.c.sun}}; opacity: {{scn.skyWarmOp}}"></path>
+<path d="{{scn.starsD}}" style="fill: #fffbe8; opacity: 0.85"></path>
+<g style="opacity: {{scn.sunOp}}">
+<circle cx="{{scn.sunX}}" cy="{{scn.sunY}}" r="50" style="fill: {{scn.c.sunDisc}}; opacity: 0.22"></circle>
+<circle cx="{{scn.sunX}}" cy="{{scn.sunY}}" r="40" style="fill: {{scn.c.sunDisc}}; opacity: 0.45"></circle>
+<circle cx="{{scn.sunX}}" cy="{{scn.sunY}}" r="31" style="fill: {{scn.c.sunDisc}}; opacity: 0.9"></circle>
+</g>
+</svg>
+<svg viewBox="0 0 1440 836" width="1440" height="836" style="position: absolute; left: 0; top: 0; display: {{scn.nightDisp}}"><path d="{{scn.starsAD}}" style="fill: #f6f4ff; opacity: 0.8"></path></svg>
+<sc-for list="{{scn.twinkles}}" as="qtw" hint-placeholder-count="0">
+<div style="position: absolute; left: {{qtw.x}}px; top: {{qtw.y}}px; width: {{qtw.s}}px; height: {{qtw.s}}px; border-radius: 50%; background: radial-gradient(circle, #ffffff 0 22%, rgba(220, 228, 255, 0.5) 38%, rgba(220, 228, 255, 0) 70%); animation: hsTwinkleS {{qtw.dur}}s ease-in-out infinite; animation-delay: {{qtw.delay}}s"></div>
+</sc-for>
+<sc-for list="{{scn.aurLayers}}" as="qau" hint-placeholder-count="0">
+<div style="position: absolute; left: {{qau.left}}px; top: {{qau.top}}px; width: {{qau.w}}px; height: {{qau.h}}px; transform-origin: 50% 100%; animation: {{qau.anim}} {{qau.dur}}s ease-in-out infinite; animation-delay: {{qau.delay}}s">
+<svg width="{{qau.w}}" height="{{qau.h}}" style="display: block; overflow: visible; opacity: {{qau.o}}">
+<path d="{{qau.outer}}" style="fill: #8fd8b6; opacity: 0.16"></path>
+<path d="{{qau.tip}}" style="fill: #b6a6e2; opacity: 0.14"></path>
+<path d="{{qau.mid}}" style="fill: #9fe3c2; opacity: 0.2"></path>
+<path d="{{qau.strokes}}" style="fill: #c9f3dc; opacity: 0.12"></path>
+<path d="{{qau.inner}}" style="fill: #cdf5de; opacity: 0.26"></path>
+</svg>
+</div>
+</sc-for>
+<sc-for list="{{scn.clouds}}" as="qcl" hint-placeholder-count="4">
+<div style="position: absolute; left: 0; top: {{qcl.y}}px; width: {{qcl.w}}px; height: {{qcl.h}}px; animation: hsDrift {{qcl.dur}}s linear infinite; animation-delay: {{qcl.delay}}s">
+<svg width="{{qcl.w}}" height="{{qcl.h}}" style="display: block; overflow: visible">
+<path d="{{qcl.d1}}" style="fill: {{scn.c.cloud}}; opacity: 0.26"></path>
+<path d="{{qcl.d2}}" style="fill: {{scn.c.cloud}}; opacity: 0.4"></path>
+<path d="{{qcl.d3}}" style="fill: {{scn.c.cloud}}; opacity: 0.55"></path>
+</svg>
+</div>
+</sc-for>

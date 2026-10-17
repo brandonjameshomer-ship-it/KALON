@@ -1,0 +1,10 @@
+<sc-if value="{{dpTyping}}" hint-placeholder-val="{{false}}">
+<div style="padding: 22px 26px 8px; display: flex; flex-direction: column; gap: 8px">
+<label style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 16px; font-weight: 600; color: #3d3a34">Date</span>
+<input class="hs-big" type="text" value="{{dpText}}" onInput="{{dpOnText}}" placeholder="MM/DD/YYYY" inputmode="numeric" autocomplete="off" style="height: 64px; box-sizing: border-box; padding: 0 18px; border: 2px solid {{accent}}; border-radius: 12px; background: #ffffff; font-size: 24px; color: #1e1c19">
+</label>
+<span style="font-size: 14px; color: #5d584f">Numbers like 04/12/1941 work, or write it out: April 12, 1941.</span>
+<span role="alert" style="display: {{dpErrDisp}}; font-size: 15px; color: #9a2f22">{{dpErr}}</span>
+</div>
+</sc-if>

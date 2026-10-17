@@ -1,0 +1,47 @@
+<sc-if value="{{wIs_name}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 18px; font-weight: 600">Who are we remembering?</span>
+<div role="group" aria-label="Who are we remembering" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{whoChips}}" as="zwh" hint-placeholder-count="2">
+<button type="button" onClick="{{zwh.pick}}" aria-pressed="{{zwh.pressed}}" style="min-height: 60px; padding: 10px 16px; display: flex; align-items: center; gap: 12px; border: 2px solid {{zwh.bd}}; border-radius: 12px; background: {{zwh.bg}}; color: #1e1c19; font-size: 18px; font-weight: 600; text-align: left; cursor: pointer"><svg viewBox="0 0 32 24" width="36" height="27" aria-hidden="true" style="flex: none; color: {{zwh.ic}}"><path d="{{zwh.icon}}" style="fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round"></path></svg><span>{{zwh.label}}</span></button>
+</sc-for>
+</div>
+<div style="display: {{twoDisp}}; flex-direction: column; gap: 10px; padding-top: 4px">
+<span style="font-size: 16px; font-weight: 600; color: #3d3a34">How would you like to remember them together?</span>
+<div role="group" aria-label="How to remember them together" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{pairChips}}" as="zpr" hint-placeholder-count="2">
+<button type="button" onClick="{{zpr.pick}}" aria-pressed="{{zpr.pressed}}" style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{zpr.bd}}; border-radius: 12px; background: {{zpr.bg}}; color: #1e1c19; text-align: left; cursor: pointer"><span style="font-size: 17px; font-weight: 600">{{zpr.label}}</span><span style="font-size: 14px; line-height: 1.4; color: #3d3a34">{{zpr.desc}}</span></button>
+</sc-for>
+</div>
+</div>
+</div>
+<span style="display: {{twoDisp}}; padding-top: 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4a463f">{{p1Heading}}</span>
+<!--@name-field {"value": "fName", "on_change": "onName", "invalid": "nameInvalid", "border": "nameBd", "font_size": 24, "required": true}-->
+<sc-if value="{{showNameErr}}" hint-placeholder-val="{{false}}">
+<span role="alert" style="margin-top: -10px; font-size: 16px; color: #9a2f22">{{nameErr}}</span>
+</sc-if>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px">
+<!--@date-field {"label": "Born", "action": "openBorn", "value": "bornDisp", "invalid": "dateInvalid", "border": "dateBd", "color": "bornFg"}-->
+<!--@date-field {"label": "Passed", "action": "openPassed", "value": "passedDisp", "invalid": "dateInvalid", "border": "dateBd", "color": "passedFg"}-->
+</div>
+<sc-if value="{{showDateErr}}" hint-placeholder-val="{{false}}">
+<span role="alert" style="margin-top: -10px; font-size: 16px; color: #9a2f22">{{dateErr}}</span>
+</sc-if>
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #4a463f">At least one date is needed. Leave “Passed” empty for a pre-need stone.</p>
+<!--@check-card {"checked": "passedLater", "on_change": "togglePassedLater", "title": "Save space for the passed date", "note": "The lettering leaves room for it, to be carved later.", "display": "passedLaterDisp"}-->
+<div style="display: {{twoDisp}}; flex-direction: column; gap: 16px; padding-top: 18px; border-top: 1px solid #e0d9cc">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4a463f">{{p2Heading}}</span>
+<!--@name-field {"value": "fName2", "on_change": "onName2", "invalid": "name2Invalid", "border": "name2Bd", "font_size": 22}-->
+<span role="alert" style="display: {{name2ErrDisp}}; margin-top: -8px; font-size: 16px; color: #9a2f22">{{name2Err}}</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px">
+<!--@date-field {"label": "Born", "action": "openBorn2", "value": "born2Disp", "invalid": "date2Invalid", "border": "date2Bd", "color": "born2Fg"}-->
+<!--@date-field {"label": "Passed", "action": "openPassed2", "value": "passed2Disp", "invalid": "date2Invalid", "border": "date2Bd", "color": "passed2Fg"}-->
+</div>
+<span role="alert" style="display: {{date2ErrDisp}}; margin-top: -8px; font-size: 16px; color: #9a2f22">{{date2Err}}</span>
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #4a463f">Leave “Passed” empty if they’re still with us. Many couples plan a companion stone together.</p>
+<!--@check-card {"checked": "passedLater2", "on_change": "togglePassedLater2", "title": "Save space for their passed date", "note": "The lettering leaves room for it, to be carved later.", "display": "passedLater2Disp"}-->
+</div>
+</div>
+</sc-if>
+

@@ -1,0 +1,11 @@
+# Agent scratch and per-developer Claude Code config
+AI_REFERENCES_NO_HUMANS/
+.claude/*.local.md
+.claude/settings.local.json
+.claude/worktrees/
+.kg-export.json
+
+# Python and editor noise
+__pycache__/
+.idea/
+.vscode/

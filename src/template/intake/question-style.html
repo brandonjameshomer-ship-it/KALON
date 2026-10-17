@@ -1,0 +1,15 @@
+<sc-if value="{{wIs_style}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<label style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 18px; font-weight: 600">In your own words</span>
+<textarea class="hs-big" rows="3" value="{{fTheme}}" onChange="{{onTheme}}" placeholder="e.g. Peaceful and warm, like her garden in spring" style="box-sizing: border-box; padding: 14px 18px; resize: vertical; border: 2px solid #cfc9bd; border-radius: 12px; background: #ffffff; font-size: 21px; line-height: 1.45; color: #1e1c19"></textarea>
+</label>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 18px; font-weight: 600">How should it feel?</span>
+<!--@feel-chips {"list": "feelChips", "item": "zfe"}-->
+<span style="font-size: 18px; font-weight: 600; padding-top: 8px">Places that meant something</span>
+<!--@feel-chips {"list": "placeFeelChips", "item": "zfp"}-->
+</div>
+</div>
+</sc-if>
+

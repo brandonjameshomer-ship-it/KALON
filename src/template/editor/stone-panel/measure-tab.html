@@ -1,0 +1,30 @@
+<sc-if value="{{isTabMeasure}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{statTiles}}" as="stt" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border: 1px solid #dcd7cc; border-radius: 10px; background: #ffffff">
+<span style="font-size: 11px; color: #5d584f">{{stt.k}}</span>
+<span style="font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums">{{stt.v}}</span>
+</div>
+</sc-for>
+</div>
+<section style="display: flex; flex-direction: column">
+<!--@heading {"text": "Sections, top to bottom", "size": "compact", "margin": "0 0 8px"}-->
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 40px 40px 40px 40px; gap: 6px; padding: 0 8px 6px; font-size: 11px; color: #5d584f; border-bottom: 1px solid #dcd7cc">
+<span>Section</span><span>Top</span><span>Height</span><span>Width</span><span>Space</span>
+</div>
+<sc-for list="{{measureRows}}" as="mr" hint-placeholder-count="6">
+<button type="button" onClick="{{mr.select}}" style="width: 100%; min-height: 40px; display: grid; grid-template-columns: minmax(0, 1fr) 40px 40px 40px 40px; gap: 6px; align-items: center; padding: 0 8px; border: 0; border-bottom: 1px solid #ebe7de; background: {{mr.bg}}; color: #1e1c19; font-size: 12px; font-variant-numeric: tabular-nums; text-align: left; cursor: pointer">
+<span style="font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{mr.name}}</span>
+<span>{{mr.top}}</span>
+<span>{{mr.h}}</span>
+<span>{{mr.w}}</span>
+<span>{{mr.gap}}</span>
+</button>
+</sc-for>
+</section>
+<button type="button" onClick="{{reflow}}" style="height: 40px; border: 1px solid #cfc9bd; border-radius: 8px; background: #ffffff; color: #1e1c19; font-size: 13px; font-weight: 500; cursor: pointer">Even out vertical spacing</button>
+<p style="margin: 0; font-size: 12px; line-height: 1.5; color: #5d584f">Top is measured from the top of the die to the top of each section. Space is the clear gap above it. Letter heights are capital heights; lettering widths are estimated from the typeface until the carver sets final type.</p>
+</div>
+</sc-if>
+

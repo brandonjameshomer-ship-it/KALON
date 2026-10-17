@@ -1,0 +1,15 @@
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{carvePills}}" as="cp" hint-placeholder-count="5">
+<button type="button" onClick="{{cp.pick}}" aria-pressed="{{cp.pressed}}" title="{{cp.spec}}" style="height: 36px; padding: 0 10px; display: flex; align-items: center; gap: 6px; border: 1px solid {{cp.bd}}; border-radius: 8px; background: {{cp.bg}}; color: #1e1c19; font-size: 12px; cursor: pointer">
+<span style="width: 10px; height: 10px; border-radius: 50%; background: {{cp.dot}}; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3)"></span>
+<span>{{cp.label}}</span>
+</button>
+</sc-for>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px">
+<span style="width: 100%; font-size: 12px; color: #4a463f">Or paint it</span>
+<sc-for list="{{edPaints}}" as="zep" hint-placeholder-count="9">
+<button type="button" onClick="{{zep.pick}}" aria-pressed="{{zep.pressed}}" aria-label="{{zep.label}} paint" title="{{zep.label}}" style="width: 28px; height: 28px; padding: 0; border-radius: 50%; border: 2px solid {{zep.ring}}; background: {{zep.col}}; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25); cursor: pointer"></button>
+</sc-for>
+<label title="Any color" style="position: relative; width: 28px; height: 28px; border-radius: 50%; border: 2px solid #d3cdc1; background: conic-gradient(#e0474c, #e8b53a, #6cc070, #3aa6c9, #6b5bd6, #d04fa8, #e0474c); cursor: pointer; overflow: hidden"><input type="color" value="{{edPaintNow}}" onInput="{{edPaintCustom}}" aria-label="Pick any paint color" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer"></label>
+</div>

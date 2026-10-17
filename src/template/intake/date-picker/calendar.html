@@ -1,0 +1,24 @@
+<sc-if value="{{dpCal}}" hint-placeholder-val="{{true}}">
+<div style="padding: 14px 18px 4px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<button type="button" onClick="{{dpNavTap}}" style="height: 48px; padding: 0 12px; display: flex; align-items: center; gap: 8px; border: 0; border-radius: 24px; background: transparent; color: #1e1c19; font-size: 19px; font-weight: 600; cursor: pointer"><span>{{dpNavLabel}}</span><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="display: {{dpNavCaret}}"><path d="M7 10 L12 15 L17 10" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"></path></svg></button>
+<div style="display: flex; gap: 4px">
+<button type="button" onClick="{{dpPrev}}" aria-label="Earlier" style="width: 48px; height: 48px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; color: #3d3a34; cursor: pointer"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M14.5 6 L8.5 12 L14.5 18" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"></path></svg></button>
+<button type="button" onClick="{{dpNext}}" aria-label="Later" aria-disabled="{{dpNextDis}}" style="width: 48px; height: 48px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; color: #3d3a34; opacity: {{dpNextOp}}; pointer-events: {{dpNextPe}}; cursor: pointer"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M9.5 6 L15.5 12 L9.5 18" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"></path></svg></button>
+</div>
+</div>
+<span style="display: block; min-height: 0; padding-left: 12px; font-size: 14px; color: #5d584f">{{dpNavHint}}</span>
+<sc-if value="{{dpIsDay}}" hint-placeholder-val="{{true}}">
+<div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; justify-items: center">
+<sc-for list="{{dpWeek}}" as="zdw" hint-placeholder-count="7">
+<span aria-hidden="true" style="width: 54px; height: 32px; display: grid; place-items: center; font-size: 15px; font-weight: 600; color: #5d584f">{{zdw.s}}</span>
+</sc-for>
+<sc-for list="{{dpDays}}" as="zdd" hint-placeholder-count="35">
+<button type="button" onClick="{{zdd.pick}}" aria-label="{{zdd.aria}}" aria-pressed="{{zdd.pressed}}" style="width: 54px; height: 54px; padding: 0; visibility: {{zdd.vis}}; border: 2px solid {{zdd.bd}}; border-radius: 50%; background: {{zdd.bg}}; color: {{zdd.fg}}; font-size: 19px; font-weight: {{zdd.w}}; pointer-events: {{zdd.pe}}; cursor: pointer">{{zdd.label}}</button>
+</sc-for>
+</div>
+</sc-if>
+<!--@month-year-grid {"show": "dpIsMonth", "list": "dpMonths", "item": "zdm", "font_size": 19}-->
+<!--@month-year-grid {"show": "dpIsYear", "list": "dpYears", "item": "zdy", "font_size": 20}-->
+</div>
+</sc-if>

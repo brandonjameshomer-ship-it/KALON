@@ -1,0 +1,390 @@
+{
+  "output": "../app/index.html",
+  "props": {
+    "accent": {"editor": "color", "default": "#2f5b4f", "options": ["#2f5b4f", "#43497a", "#8a4b2f", "#2b2a27"]},
+    "$preview": {"width": 1440, "height": 900}
+  },
+  "template": [
+    "template/head/document.html",
+    {
+      "open": "<x-dc>\n",
+      "items": [
+        {
+          "open": "<helmet>\n<link rel=\"stylesheet\" href=\"./fonts/fonts.css\">\n",
+          "items": [
+            {
+              "open": "<style>\n",
+              "items": [
+                "template/head/base.css",
+                "template/head/icon-motion.css",
+                "template/head/component-styles.css",
+                "template/head/scene-keyframes.css"
+              ],
+              "close": "</style>\n"
+            }
+          ],
+          "close": "</helmet>\n"
+        },
+        {
+          "open": "<div style=\"position: relative; width: {{LW}}px; height: {{LH}}px; overflow: clip; transform: scale({{rootScale}}); transform-origin: 0 0; background: radial-gradient(ellipse at 50% 35%, #fbfaf7 0%, #ebe7e0 80%); color: #1e1c19; font-family: 'Instrument Sans', system-ui, sans-serif\">\n\n",
+          "items": [
+            {
+              "open": "<header style=\"position: absolute; left: 0; top: 0; width: {{LW}}px; height: 64px; white-space: nowrap; box-sizing: border-box; z-index: 30; display: grid; grid-template-columns: {{hdrCols}}; column-gap: 16px; align-items: center; padding: 0 20px; background: transparent\">\n",
+              "items": [
+                "template/shell/header-brand.html",
+                "template/shell/progress-nav.html",
+                "template/shell/header-actions.html"
+              ],
+              "close": "</header>\n\n"
+            },
+            {
+              "open": "<sc-if value=\"{{isIntake}}\" hint-placeholder-val=\"{{true}}\">\n",
+              "items": [
+                "template/intake/sparkles.html",
+                {
+                  "open": "<div style=\"position: absolute; left: 0; top: 64px; width: {{LW}}px; height: {{LH64}}px; display: grid; grid-template-columns: 440px minmax(0, 1fr)\">\n",
+                  "items": [
+                    {
+                      "open": "<section aria-label=\"Your answers so far\" style=\"position: relative; z-index: 1; background: transparent; padding: 30px 30px 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px; overflow: hidden; min-height: 0\">\n",
+                      "items": [
+                        {
+                          "open": "<div style=\"margin: auto 0; display: flex; flex-direction: column; gap: 20px; min-width: 0\">\n",
+                          "items": [
+                            "template/intake/answers-preview.html",
+                            "template/intake/question-list.html"
+                          ],
+                          "close": "</div>\n"
+                        }
+                      ],
+                      "close": "</section>\n\n"
+                    },
+                    {
+                      "open": "<section aria-label=\"Question\" style=\"position: relative; z-index: 1; overflow: hidden; background: transparent\">\n\n\n",
+                      "items": [
+                        {
+                          "open": "<div style=\"position: absolute; left: 0; top: 0; right: 0; bottom: 96px; overflow-y: auto; display: flex; flex-direction: column; align-items: center\">\n<div style=\"position: relative; width: 720px; margin: auto 0; padding: 44px 0; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px; animation: {{wAnim}}\">\n",
+                          "items": [
+                            "template/intake/question-heading.html",
+                            "template/intake/question-name.html",
+                            "template/intake/question-quotes.html",
+                            "template/intake/question-photos.html",
+                            "template/intake/question-story.html",
+                            "template/intake/question-style.html",
+                            "template/intake/question-details.html",
+                            "template/intake/question-faith.html"
+                          ],
+                          "close": "</div>\n</div>\n"
+                        },
+                        "template/intake/footer-nav.html"
+                      ],
+                      "close": "</section>\n"
+                    }
+                  ],
+                  "close": "</div>\n"
+                },
+                {
+                  "open": "<sc-if value=\"{{dpOpen}}\" hint-placeholder-val=\"{{false}}\">\n<div onClick=\"{{dpBackdrop}}\" style=\"position: absolute; left: 0; top: 0; width: {{LW}}px; height: {{LH}}px; z-index: 60; display: grid; place-items: center; background: rgba(34, 30, 25, 0.44); animation: hsDpFade .22s ease both\">\n<div role=\"dialog\" aria-modal=\"true\" aria-label=\"{{dpTitle}}\" onKeyDown=\"{{dpKey}}\" style=\"width: 460px; display: flex; flex-direction: column; border-radius: 28px; background: #fbfaf7; box-shadow: 0 24px 60px rgba(30, 24, 16, 0.32), 0 2px 8px rgba(30, 24, 16, 0.16); overflow: hidden; animation: hsDpRise .28s cubic-bezier(.2,.8,.25,1) both\">\n",
+                  "items": [
+                    "template/intake/date-picker/header.html",
+                    "template/intake/date-picker/calendar.html",
+                    "template/intake/date-picker/typing.html",
+                    "template/intake/date-picker/actions.html"
+                  ],
+                  "close": "</div>\n</div>\n</sc-if>\n"
+                }
+              ],
+              "close": "</sc-if>\n\n"
+            },
+            {
+              "open": "<sc-if value=\"{{isBuilding}}\" hint-placeholder-val=\"{{false}}\">\n<div style=\"position: absolute; left: 0; top: 64px; width: {{LW}}px; height: {{LH64}}px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 34px\">\n",
+              "items": [
+                "template/building/sparkles.html",
+                "template/building/status.html"
+              ],
+              "close": "</div>\n</sc-if>\n\n"
+            },
+            {
+              "open": "<sc-if value=\"{{isStage}}\" hint-placeholder-val=\"{{false}}\">\n<div style=\"position: absolute; left: 0; top: 0; width: {{LW}}px; height: {{LH}}px\">\n\n",
+              "items": [
+                {
+                  "open": "<sc-if value=\"{{showLand}}\" hint-placeholder-val=\"{{false}}\">\n",
+                  "items": [
+                    {
+                      "open": "<div aria-hidden=\"true\" style=\"position: absolute; left: 0; top: 64px; width: 1440px; height: 836px; transform-origin: 0 0; transform: {{scTf}}; overflow: hidden; opacity: {{finOp}}; transition: opacity 1.6s ease .2s; pointer-events: none\">\n",
+                      "items": [
+                        "template/scene/sky.html",
+                        "template/scene/land.html",
+                        "template/scene/scenery.html",
+                        "template/scene/grade.html"
+                      ],
+                      "close": "</div>\n"
+                    },
+                    "template/scene/foreground.html"
+                  ],
+                  "close": "</sc-if>\n\n"
+                },
+                "template/options/stage-labels.html",
+                "template/options/focus-bar.html",
+                {
+                  "open": "<sc-for list=\"{{opts}}\" as=\"o\" hint-placeholder-count=\"3\">\n",
+                  "items": [
+                    {
+                      "open": "<div role=\"group\" aria-label=\"{{o.groupLabel}}\" style=\"position: absolute; left: {{o.px}}px; top: {{o.py}}px; width: {{o.pw}}px; height: {{o.ph}}px; transform: {{o.ptf}}; opacity: {{o.pop}}; visibility: {{o.pvis}}; background-color: {{o.pbg}}; border-radius: {{o.prad}}; transition: {{o.ptrans}}; isolation: isolate; z-index: {{o.z}}; transform-origin: {{o.porigin}}; filter: {{o.pfilter}}\">\n",
+                      "items": [
+                        {
+                          "open": "<div style=\"position: absolute; left: {{o.scx}}px; top: {{o.scy}}px; width: {{o.vbW}}px; height: {{o.vbH}}px; transform: translate(-50%, -50%) scale({{o.sc}}); transform-origin: 50% 50%; transition: {{o.strans}}\">\n",
+                          "items": [
+                            {
+                              "open": "<svg viewBox=\"{{o.vb}}\" width=\"{{o.vbW}}\" height=\"{{o.vbH}}\" role=\"img\" aria-label=\"{{o.aria}}\" style=\"position: absolute; left: 0; top: 0; overflow: visible\">\n",
+                              "items": [
+                                "template/options/card-defs.html",
+                                "template/options/card-stone.html"
+                              ],
+                              "close": "</svg>\n"
+                            },
+                            "template/options/card-dimensions.html",
+                            "template/options/card-layers.html",
+                            "template/options/card-front-vases.html"
+                          ],
+                          "close": "</div>\n"
+                        },
+                        "template/options/card-pick-button.html"
+                      ],
+                      "close": "</div>\n\n"
+                    },
+                    "template/options/card-info.html"
+                  ],
+                  "close": "</sc-for>\n\n"
+                },
+                {
+                  "open": "<aside aria-label=\"The stone, measurements and handoff\" style=\"position: absolute; left: 0; top: 64px; width: 300px; height: {{LH64}}px; box-sizing: border-box; display: flex; flex-direction: column; background: #fbfaf7; border-right: 1px solid #dcd7cc; z-index: 10; transform: translateX({{lpX}}px); visibility: {{panelVis}}; transition: {{panelTrans}}\">\n",
+                  "items": [
+                    "template/editor/stone-panel/tabs.html",
+                    {
+                      "open": "<div style=\"flex-grow: 1; overflow-y: auto; direction: rtl\">\n<div style=\"direction: ltr\">\n",
+                      "items": [
+                        {
+                          "open": "<sc-if value=\"{{isLTabDesign}}\" hint-placeholder-val=\"{{true}}\">\n<div>\n",
+                          "items": [
+                            {"component": "accordion", "args": {"key": "type", "title": "Headstone type"}, "items": ["template/editor/stone-panel/headstone-type.html"]},
+                            {"component": "accordion", "args": {"key": "shape", "title": "Shape"}, "items": ["template/editor/stone-panel/shape.html"]},
+                            {"component": "accordion", "args": {"key": "size", "title": "Size"}, "items": ["template/editor/stone-panel/size.html"]},
+                            {"component": "accordion", "args": {"key": "vases", "title": "Flower vases"}, "items": ["template/editor/stone-panel/vases.html"]},
+                            {"component": "accordion", "args": {"key": "granite", "title": "Granite &amp; base"}, "items": ["template/editor/stone-panel/granite-base.html"]},
+                            {"component": "accordion", "args": {"key": "surface", "title": "Surface &amp; edges"}, "items": ["template/editor/stone-panel/surface-edges.html"]},
+                            {"component": "accordion", "args": {"key": "layout", "title": "Layout"}, "items": ["template/editor/stone-panel/layout.html"]},
+                            {"component": "accordion", "args": {"key": "lettering", "title": "Lettering"}, "items": ["template/editor/stone-panel/lettering.html"]},
+                            {"component": "accordion", "args": {"key": "history", "title": "History"}, "items": ["template/editor/stone-panel/history.html"]}
+                          ],
+                          "close": "</div>\n</sc-if>\n"
+                        },
+                        {
+                          "open": "<div style=\"padding: 16px 20px 28px; display: {{lMeasDisp}}; flex-direction: column\">\n",
+                          "items": [
+                            "template/editor/stone-panel/measure-tab.html",
+                            "template/editor/stone-panel/handoff-tab.html"
+                          ],
+                          "close": "</div>\n"
+                        }
+                      ],
+                      "close": "</div>\n</div>\n"
+                    }
+                  ],
+                  "close": "</aside>\n\n"
+                },
+                {
+                  "open": "<aside aria-label=\"Layers\" style=\"position: absolute; left: {{rpL}}px; top: 64px; width: 360px; height: {{LH64}}px; box-sizing: border-box; display: flex; flex-direction: column; background: #fbfaf7; border-left: 1px solid #dcd7cc; z-index: 10; transform: translateX({{rpX}}px); visibility: {{panelVis}}; transition: {{panelTrans}}\">\n<div style=\"flex-grow: 1; overflow-y: auto; padding: 16px 20px 28px\">\n<div style=\"display: flex; flex-direction: column; gap: 14px\">\n",
+                  "items": [
+                    "template/editor/layers-panel/issues.html",
+                    "template/editor/layers-panel/layer-list.html",
+                    "template/editor/layers-panel/no-selection.html",
+                    {
+                      "open": "<sc-if value=\"{{hasSel}}\" hint-placeholder-val=\"{{true}}\">\n<section aria-label=\"Selected layer\" style=\"display: flex; flex-direction: column\">\n",
+                      "items": [
+                        "template/editor/layers-panel/selected-header.html",
+                        {
+                          "open": "<sc-if value=\"{{selIsDates}}\" hint-placeholder-val=\"{{false}}\">\n",
+                          "items": [{"component": "accordion", "args": {"key": "dcont", "title": "Date format", "variant": "inset"}, "items": ["template/editor/layers-panel/selected-dates.html"]}],
+                          "close": "</sc-if>\n"
+                        },
+                        {
+                          "open": "<sc-if value=\"{{selIsPlainText}}\" hint-placeholder-val=\"{{true}}\">\n",
+                          "items": [{"component": "accordion", "args": {"key": "tcont", "title": "Wording", "variant": "inset"}, "items": ["template/editor/layers-panel/selected-plain-text.html"]}],
+                          "close": "</sc-if>\n"
+                        },
+                        {
+                          "open": "<sc-if value=\"{{selIsText}}\" hint-placeholder-val=\"{{true}}\">\n",
+                          "items": [{"component": "accordion", "args": {"key": "tstyle", "title": "Lettering style", "variant": "inset"}, "items": ["template/editor/layers-panel/selected-text.html"]}],
+                          "close": "</sc-if>\n"
+                        },
+                        {
+                          "open": "<sc-if value=\"{{selIsSymbol}}\" hint-placeholder-val=\"{{false}}\">\n",
+                          "items": [{"component": "accordion", "args": {"key": "sym", "title": "Icon", "variant": "inset"}, "items": ["template/editor/layers-panel/selected-symbol.html"]}],
+                          "close": "</sc-if>\n"
+                        },
+                        {
+                          "open": "<sc-if value=\"{{selIsPhoto}}\" hint-placeholder-val=\"{{false}}\">\n",
+                          "items": [{"component": "accordion", "args": {"key": "photo", "title": "Image", "variant": "inset"}, "items": ["template/editor/layers-panel/selected-photo.html"]}],
+                          "close": "</sc-if>\n"
+                        },
+                        {
+                          "open": "<sc-if value=\"{{selIsBorder}}\" hint-placeholder-val=\"{{false}}\">\n",
+                          "items": [{"component": "accordion", "args": {"key": "border", "title": "Border", "variant": "inset"}, "items": ["template/editor/layers-panel/selected-border.html"]}],
+                          "close": "</sc-if>\n"
+                        },
+                        {
+                          "open": "<sc-if value=\"{{selShowCarve}}\" hint-placeholder-val=\"{{true}}\">\n",
+                          "items": [{"component": "accordion", "args": {"key": "finish", "title": "Finish", "variant": "inset"}, "items": ["template/editor/layers-panel/selected-carve.html"]}],
+                          "close": "</sc-if>\n"
+                        },
+                        {
+                          "open": "<sc-if value=\"{{selMovable}}\" hint-placeholder-val=\"{{true}}\">\n",
+                          "items": [{"component": "accordion", "args": {"key": "pos", "title": "Position", "variant": "inset"}, "items": ["template/editor/layers-panel/selected-movable.html"]}],
+                          "close": "</sc-if>\n"
+                        }
+                      ],
+                      "close": "</section>\n</sc-if>\n"
+                    }
+                  ],
+                  "close": "</div>\n\n\n</div>\n</aside>\n"
+                },
+                "template/editor/photo-filter-defs.html",
+                {
+                  "open": "<aside aria-label=\"Guided changes\" style=\"position: absolute; left: {{gpL}}px; top: 64px; width: 420px; height: {{LH64}}px; box-sizing: border-box; display: flex; flex-direction: column; background: #fbfaf7; border-left: 1px solid #dcd7cc; z-index: 10; transform: translateX({{gpX}}px); visibility: {{gpVis}}; transition: {{gpTrans}}\">\n",
+                  "items": [
+                    "template/refine/progress.html",
+                    {
+                      "open": "<div style=\"flex-grow: 1; overflow-y: auto; padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 18px\">\n",
+                      "items": [
+                        "template/refine/intro.html",
+                        "template/refine/step-0-type.html",
+                        "template/refine/step-1-shape-size.html",
+                        "template/refine/step-2-base.html",
+                        "template/refine/step-5-layout.html",
+                        "template/refine/step-3-dates.html",
+                        "template/refine/step-4-symbols.html",
+                        "template/refine/step-6-surface.html"
+                      ],
+                      "close": "</div>\n"
+                    },
+                    "template/refine/footer.html"
+                  ],
+                  "close": "</aside>\n\n"
+                },
+                "template/options/pair-toggle.html",
+                {
+                  "open": "<sc-if value=\"{{isFinal}}\" hint-placeholder-val=\"{{false}}\">\n",
+                  "items": [
+                    "template/final/card-toggle.html",
+                    "template/final/card.html"
+                  ],
+                  "close": "</sc-if>\n\n"
+                }
+              ],
+              "close": "</div>\n</sc-if>\n"
+            }
+          ],
+          "close": "</div>\n"
+        }
+      ],
+      "close": "</x-dc>\n"
+    }
+  ],
+  "script": [
+    "script/catalog/materials-and-lettering.js",
+    "script/catalog/stone-options.js",
+    "script/generate/apply-preferences.js",
+    "script/catalog/steps-and-scenes.js",
+    "script/shared/helpers.js",
+    "script/catalog/symbols.js",
+    "script/content/keyword-rules.js",
+    "script/layout/text-fit.js",
+    "script/stone/outline.js",
+    "script/stone/profile.js",
+    "script/stone/base-sizing.js",
+    "script/stone/vases.js",
+    "script/stone/carve-look.js",
+    "script/content/dates-and-reserved.js",
+    "script/content/date-lines.js",
+    "script/content/analyze.js",
+    "script/content/quotes-and-content.js",
+    "script/layout/stack-flow.js",
+    "script/layout/layout.js",
+    "script/layout/flip-and-finish.js",
+    "script/layout/layout-split.js",
+    "script/layout/adjustment-options.js",
+    "script/layout/adjustments.js",
+    "script/layout/best-lettering.js",
+    "script/layout/placement-helpers.js",
+    "script/layout/layout-fit.js",
+    "script/generate/checks.js",
+    "script/generate/size-and-type.js",
+    "script/generate/generate.js",
+    "script/generate/pairs.js",
+    "script/scenes/scene-choice.js",
+    "script/catalog/icons-and-sample.js",
+    "script/shared/random-and-color.js",
+    "script/scenes/setting-tables.js",
+    "script/scenes/story-reading.js",
+    "script/scenes/brush-primitives.js",
+    "script/scenes/plants.js",
+    "script/scenes/keepsakes.js",
+    "script/scenes/palette.js",
+    "script/scenes/paint.js",
+    "script/scenes/telling-schedule.js",
+    "script/scenes/life-poem.js",
+    "script/scenes/chip-icons.js",
+    "script/scenes/pair-poem.js",
+    "script/component/viewport-limits.js",
+    {
+      "open": "class Component extends DCLogic {\n",
+      "items": [
+        "script/component/lifecycle.js",
+        "script/component/date-picker.js",
+        "script/component/intake-fields.js",
+        "script/component/wizard-steps.js",
+        "script/component/screen-flow.js",
+        "script/component/history.js",
+        "script/component/design-setters.js",
+        "script/component/layer-updates.js",
+        "script/component/layer-add.js",
+        "script/component/layer-fit-edit.js",
+        "script/component/drag-and-swap.js",
+        "script/component/layer-measure.js",
+        "script/component/svg-export.js",
+        "script/component/ui-helpers.js",
+        {
+          "open": "  renderVals() {\n",
+          "items": [
+            "script/component/render-vals/screen-layout.js",
+            "script/component/render-vals/header-steps.js",
+            "script/component/render-vals/intake-people.js",
+            "script/component/render-vals/intake-date-picker.js",
+            "script/component/render-vals/intake-details.js",
+            "script/component/render-vals/intake-prefs.js",
+            "script/component/render-vals/intake-wizard.js",
+            "script/component/render-vals/intake-preview.js",
+            "script/component/render-vals/building-screen.js",
+            "script/component/render-vals/stage-header.js",
+            "script/component/render-vals/design-options.js",
+            "script/component/render-vals/guided-steps.js",
+            "script/component/render-vals/guided-vases.js",
+            "script/component/render-vals/guided-design.js",
+            "script/component/render-vals/guided-words.js",
+            "script/component/render-vals/guided-lettering-fit.js",
+            "script/component/render-vals/guided-partner-photo.js",
+            "script/component/render-vals/guided-finish.js",
+            "script/component/render-vals/editor-shape-size-base.js",
+            "script/component/render-vals/editor-layers.js",
+            "script/component/render-vals/selected-layer.js",
+            "script/component/render-vals/editor-sections-history.js",
+            "script/component/render-vals/selected-layer-details.js",
+            "script/component/render-vals/editor-measure-svg.js",
+            "script/component/render-vals/final-scene.js"
+          ],
+          "close": "  }\n"
+        }
+      ],
+      "close": "}\n"
+    }]
+}

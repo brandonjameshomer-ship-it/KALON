@@ -1,0 +1,7 @@
+<!--@stepper {"label": "Width", "value": "wLabel", "minus": "wMinus", "minus_label": "Make the stone 2 inches narrower", "plus": "wPlus", "plus_label": "Make the stone 2 inches wider", "size": "compact"}-->
+<!--@stepper {"label": "Height", "value": "hLabel", "minus": "hMinus", "minus_label": "Make the stone 1 inch shorter", "plus": "hPlus", "plus_label": "Make the stone 1 inch taller", "size": "compact"}-->
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<button type="button" onClick="{{bestSize}}" title="Resize the stone to suit the lettering" style="min-height: 40px; padding: 4px 8px; border: 1px solid {{accent}}; border-radius: 8px; background: #ffffff; color: {{accent}}; font-size: 12px; font-weight: 600; line-height: 1.25; cursor: pointer">Best stone size</button>
+<button type="button" onClick="{{fitLettering}}" title="Resize the lettering to suit the stone" style="min-height: 40px; padding: 4px 8px; border: 1px solid {{accent}}; border-radius: 8px; background: #ffffff; color: {{accent}}; font-size: 12px; font-weight: 600; line-height: 1.25; cursor: pointer">Best lettering fit</button>
+</div>
+<!--@size-message {"size": "compact"}-->

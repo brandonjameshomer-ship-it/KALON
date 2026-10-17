@@ -1,0 +1,57 @@
+<section style="display: flex; flex-direction: column; gap: 8px">
+<div style="position: relative; display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<div style="display: flex; flex-direction: column"><!--@heading {"text": "Layers", "size": "compact"}--><span style="font-size: 11px; color: #5d584f">{{layerCount}} · drag to reorder</span></div>
+<div style="display: flex; gap: 6px">
+<button type="button" onClick="{{toggleAdd}}" aria-expanded="{{addExp}}" aria-haspopup="menu" style="height: 36px; padding: 0 12px; white-space: nowrap; display: flex; align-items: center; gap: 6px; border: 1px solid {{accent}}; border-radius: 8px; background: {{accent}}; color: #ffffff; font-size: 13px; font-weight: 600; cursor: pointer">
+<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 5 V19 M5 12 H19" style="fill: none; stroke: #ffffff; stroke-width: 2.4; stroke-linecap: round"></path></svg><span>Add layer</span></button>
+<button type="button" onClick="{{askDelete}}" disabled="{{delDisabled}}" aria-haspopup="dialog" aria-expanded="{{delExp}}" title="{{delTitle}}" style="height: 36px; padding: 0 12px; white-space: nowrap; display: flex; align-items: center; gap: 6px; border: 1px solid #e3c1bb; border-radius: 8px; background: #ffffff; color: #9a2f22; font-size: 13px; font-weight: 600; cursor: pointer; opacity: {{delOpacity}}">
+<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 7 H19 M10 7 V4.5 H14 V7 M7 7 L8 20 H16 L17 7 M10.5 11 V16.5 M13.5 11 V16.5" style="fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round"></path></svg><span>Delete</span></button>
+</div>
+<div role="alertdialog" aria-label="Confirm delete" style="display: {{delDisp}}; position: absolute; right: 0; top: 42px; z-index: 21; width: 270px; flex-direction: column; gap: 10px; padding: 14px; border: 1px solid #e3c1bb; border-radius: 12px; background: #ffffff; box-shadow: 0 12px 32px rgba(30, 24, 16, 0.18)">
+<span style="font-size: 14px; font-weight: 600; color: #1e1c19">{{delQ}}</span>
+<span style="font-size: 12px; line-height: 1.45; color: #4a463f">{{delNote}}</span>
+<div style="display: flex; justify-content: flex-end; gap: 8px">
+<button type="button" onClick="{{cancelDelete}}" style="height: 34px; padding: 0 12px; border: 1px solid #cfc9bd; border-radius: 8px; background: #ffffff; color: #1e1c19; font-size: 13px; cursor: pointer">Keep it</button>
+<button type="button" onClick="{{confirmDelete}}" style="height: 34px; padding: 0 12px; border: 1px solid #9a2f22; border-radius: 8px; background: #9a2f22; color: #ffffff; font-size: 13px; font-weight: 600; cursor: pointer">Delete layer</button>
+</div>
+</div>
+<div role="menu" aria-label="Add a layer" style="display: {{addDisp}}; position: absolute; right: 0; top: 42px; z-index: 20; width: 250px; flex-direction: column; padding: 6px; border: 1px solid #d8d1c4; border-radius: 12px; background: #ffffff; box-shadow: 0 12px 32px rgba(30, 24, 16, 0.18)">
+<sc-for list="{{addItems}}" as="zead" hint-placeholder-count="5">
+<sc-if value="{{zead.isBtn}}" hint-placeholder-val="{{true}}">
+<button type="button" role="menuitem" onClick="{{zead.pick}}" style="width: 100%; min-height: 48px; display: flex; align-items: center; gap: 10px; padding: 6px 10px; border: 0; border-radius: 8px; background: transparent; color: #1e1c19; text-align: left; cursor: pointer">
+<span style="width: 30px; height: 30px; flex: none; border-radius: 8px; background: #efece5; display: flex; align-items: center; justify-content: center"><svg viewBox="{{zead.vb}}" width="16" height="16" aria-hidden="true"><path d="{{zead.d}}" style="fill: {{zead.fill}}; stroke: #3d3a34; stroke-width: {{zead.sw}}; stroke-linecap: round; stroke-linejoin: round"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 1px"><span style="font-size: 13px; font-weight: 600">{{zead.label}}</span><span style="font-size: 11px; color: #5d584f">{{zead.desc}}</span></span>
+</button>
+</sc-if>
+<sc-if value="{{zead.isUpload}}" hint-placeholder-val="{{false}}">
+<label role="menuitem" style="position: relative; min-height: 48px; display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 8px; color: #1e1c19; cursor: pointer">
+<input type="file" accept="image/*" onChange="{{zead.onFiles}}" aria-label="Upload a photo for a new image layer" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer">
+<span style="width: 30px; height: 30px; flex: none; border-radius: 8px; background: #efece5; display: flex; align-items: center; justify-content: center"><svg viewBox="{{zead.vb}}" width="16" height="16" aria-hidden="true"><path d="{{zead.d}}" style="fill: {{zead.fill}}; stroke: #3d3a34; stroke-width: {{zead.sw}}; stroke-linecap: round; stroke-linejoin: round"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 1px"><span style="font-size: 13px; font-weight: 600">{{zead.label}}</span><span style="font-size: 11px; color: #5d584f">{{zead.desc}}</span></span>
+</label>
+</sc-if>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; max-height: 230px; overflow-y: auto">
+<sc-for list="{{layerRows}}" as="r" hint-placeholder-count="6">
+<div class="hs-lrow" draggable="true" onDragStart="{{r.onDragStart}}" onDragOver="{{r.onDragOver}}" onDrop="{{r.onDrop}}" onDragEnd="{{r.onDragEnd}}" title="Drag to move this layer above or below others" style="display: flex; align-items: center; border-radius: 8px; border: 1px solid {{r.dragBd}}; background: {{r.bg}}">
+<span aria-hidden="true" style="width: 14px; flex: none; padding-left: 6px; color: #9d968a; font-size: 12px; line-height: 1; letter-spacing: -1px">⋮⋮</span>
+<button type="button" onClick="{{r.select}}" aria-pressed="{{r.pressed}}" style="flex-grow: 1; min-width: 0; height: 42px; display: flex; align-items: center; gap: 10px; padding: 0 10px; border: 0; background: transparent; cursor: pointer; text-align: left">
+<span style="width: 26px; height: 26px; flex-shrink: 0; border-radius: 6px; background: #efece5; display: flex; align-items: center; justify-content: center">
+<svg viewBox="{{r.iconVB}}" width="16" height="16" aria-hidden="true"><path d="{{r.iconD}}" style="fill: {{r.iconFill}}; stroke: {{r.iconStroke}}; stroke-width: {{r.iconSW}}; fill-rule: evenodd; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+</span>
+<span style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column">
+<span style="display: flex; align-items: center; gap: 6px; min-width: 0"><span style="font-size: 13px; font-weight: 600; color: {{r.nameColor}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.name}}</span><span style="display: {{r.tagDisp}}; flex: none; padding: 1px 6px; border-radius: 999px; background: {{r.tagBg}}; color: {{r.tagFg}}; font-size: 10px; font-weight: 600">{{r.tag}}</span></span>
+<span style="font-size: 11px; color: #5d584f; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.sub}}</span>
+</span>
+</button>
+<button type="button" onClick="{{r.toggle}}" aria-label="{{r.eyeLabel}}" style="width: 36px; height: 42px; flex-shrink: 0; border: 0; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="{{r.eyeD}}" style="fill: none; stroke: {{r.eyeColor}}; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+</button>
+</div>
+</sc-for>
+</div>
+<span aria-live="polite" style="display: {{edStatusDisp}}; font-size: 12px; color: #5e4012">{{status}}</span>
+</section>
+

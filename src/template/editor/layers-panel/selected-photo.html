@@ -1,0 +1,41 @@
+<sc-for list="{{photoGroups}}" as="zeph" hint-placeholder-count="1">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 600; color: #3d3a34">{{zeph.title}}</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{zeph.photos}}" as="zepp" hint-placeholder-count="2">
+<button type="button" onClick="{{zepp.pick}}" aria-pressed="{{zepp.pressed}}" aria-label="{{zepp.label}}" style="width: 52px; height: 52px; padding: 2px; border: 2px solid {{zepp.bd}}; border-radius: 8px; background: #ffffff; cursor: pointer">
+<img src="{{zepp.url}}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 5px">
+</button>
+</sc-for>
+<label title="Upload a photo of {{zeph.who}}" style="position: relative; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border: 1px dashed #b3ab9c; border-radius: 8px; background: #ffffff; cursor: pointer">
+<input type="file" accept="image/*" multiple="{{yes}}" onChange="{{zeph.onFiles}}" aria-label="Upload a photo of {{zeph.who}}" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer">
+<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 16 V4 M7 9 L12 4 L17 9 M4 15 V19 Q4 20 5 20 H19 Q20 20 20 19 V15" style="fill: none; stroke: {{accent}}; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+</label>
+</div>
+<span style="display: {{zeph.emptyDisp}}; font-size: 12px; color: #5d584f">No photos of {{zeph.who}} yet. Upload one here.</span>
+</div>
+</sc-for>
+<span style="font-size: 12px; color: #5d584f">Style</span>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{edLookPills}}" as="zelk" hint-placeholder-count="4">
+<button type="button" onClick="{{zelk.pick}}" aria-pressed="{{zelk.pressed}}" style="padding: 4px 2px 6px; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 1px solid {{zelk.bd}}; border-radius: 8px; background: {{zelk.bg}}; cursor: pointer">
+<svg viewBox="0 0 48 60" width="40" height="50" aria-hidden="true" style="display: block; border-radius: 5px; isolation: isolate"><rect width="48" height="60" style="fill: {{lkBg}}"></rect><image href="{{zelk.url}}" width="48" height="60" preserveAspectRatio="xMidYMid slice" style="filter: {{zelk.f}}; mix-blend-mode: {{zelk.blend}}"></image></svg>
+<span style="font-size: 11px; font-weight: 600; color: #1e1c19">{{zelk.label}}</span>
+</button>
+</sc-for>
+</div>
+<span style="display: {{edPhotoCarvedDisp}}; font-size: 12px; line-height: 1.4; color: #5d584f">Carved into the granite, drawn from the photo.</span>
+<span style="font-size: 12px; color: #5d584f">Shape</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{framePills}}" as="fr">
+<button type="button" onClick="{{fr.pick}}" aria-pressed="{{fr.pressed}}" style="height: 36px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid {{fr.bd}}; border-radius: 8px; background: {{fr.bg}}; color: #1e1c19; font-size: 12px; cursor: pointer"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="{{fr.sx}}" y="{{fr.sy}}" width="{{fr.sw}}" height="{{fr.sh}}" rx="{{fr.srx}}" ry="{{fr.sry}}" style="fill: none; stroke: currentColor; stroke-width: 1.8"></rect></svg><span>{{fr.label}}</span></button>
+</sc-for>
+</div>
+<div style="display: {{edPhotoPlainDisp}}; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; color: #5d584f">How it's made</span>
+<!--@choice-chips {"list": "finishPills", "item": "fn", "size": "compact", "columns": 2}-->
+<span style="font-size: 12px; color: #5d584f">Colors</span>
+<!--@choice-chips {"list": "edTonePills", "item": "zetn", "size": "compact", "columns": 2}-->
+<span style="display: {{edLaserToneDisp}}; font-size: 12px; line-height: 1.4; color: #5d584f">Laser etching is always black and white. Color switches to porcelain.</span>
+</div>
+<!--@slider {"label": "Photo width", "readout": "selPwLabel", "value": "selPw", "on_change": "onPw", "min": "3", "max": "16", "step": "0.1", "aria_label": "Photo width in inches"}-->

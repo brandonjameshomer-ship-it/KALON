@@ -1,0 +1,20 @@
+<div style="display: flex; justify-content: flex-end; align-items: center; gap: 10px">
+<sc-if value="{{isIntake}}" hint-placeholder-val="{{false}}">
+<button type="button" onClick="{{fillSample}}" title="For demos and testing" style="height: 34px; padding: 0 12px; border: 1px dashed #b8b1a5; border-radius: 17px; background: transparent; color: #5d584f; font-size: 13px; cursor: pointer">Demo: fill in a sample person</button>
+</sc-if>
+<sc-if value="{{showRegen}}" hint-placeholder-val="{{false}}">
+<button type="button" onClick="{{regen}}" style="height: 42px; padding: 0 16px; display: flex; align-items: center; gap: 8px; border: 1px solid #cfc9bd; border-radius: 8px; background: #ffffff; color: #1e1c19; font-size: 14px; font-weight: 500; cursor: pointer">
+<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 12 A8 8 0 1 1 17.7 6.3 M20 4 V9 H15" style="fill: none; stroke: #3d3a34; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+<span>Show 3 new designs</span>
+</button>
+</sc-if>
+<!--@header-button {"show": "showUndo", "action": "undo", "label": "Undo", "disabled": "undoDisabled", "opacity": "undoOpacity"}-->
+<!--@header-button {"show": "showToEditor", "action": "toEdit", "label": "Open full editor"}-->
+<!--@header-button {"show": "showToGuided", "action": "toGuided", "label": "Guided mode"}-->
+<sc-if value="{{showThisOne}}" hint-placeholder-val="{{false}}">
+<button type="button" class="hs-thisone" onClick="{{toFinal}}" style="height: 42px; padding: 0 18px; display: flex; align-items: center; gap: 8px; border: 1px solid {{accent}}; border-radius: 8px; background: {{accent}}; color: #ffffff; font-size: 14px; font-weight: 600; cursor: pointer">
+<span>This is the one</span>
+<svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" style="overflow: visible"><path class="hs-to-chk" d="M5 12.5 L10 17 L19 7" style="fill: none; stroke: #ffffff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round"></path><path class="hs-to-ray" d="M12.00 -0.20 L12.00 -3.40" pathLength="10" style="fill: none; stroke: #ffffff; stroke-width: 1.7; stroke-linecap: round; animation-delay: 0.60s"></path><path class="hs-to-ray" d="M20.63 3.37 L22.89 1.11" pathLength="10" style="fill: none; stroke: #ffffff; stroke-width: 1.7; stroke-linecap: round; animation-delay: 0.80s"></path><path class="hs-to-ray" d="M24.20 12.00 L27.40 12.00" pathLength="10" style="fill: none; stroke: #ffffff; stroke-width: 1.7; stroke-linecap: round; animation-delay: 1.00s"></path><path class="hs-to-ray" d="M20.63 20.63 L22.89 22.89" pathLength="10" style="fill: none; stroke: #ffffff; stroke-width: 1.7; stroke-linecap: round; animation-delay: 1.20s"></path><path class="hs-to-ray" d="M12.00 24.20 L12.00 27.40" pathLength="10" style="fill: none; stroke: #ffffff; stroke-width: 1.7; stroke-linecap: round; animation-delay: 1.40s"></path><path class="hs-to-ray" d="M3.37 20.63 L1.11 22.89" pathLength="10" style="fill: none; stroke: #ffffff; stroke-width: 1.7; stroke-linecap: round; animation-delay: 1.60s"></path><path class="hs-to-ray" d="M-0.20 12.00 L-3.40 12.00" pathLength="10" style="fill: none; stroke: #ffffff; stroke-width: 1.7; stroke-linecap: round; animation-delay: 1.80s"></path><path class="hs-to-ray" d="M3.37 3.37 L1.11 1.11" pathLength="10" style="fill: none; stroke: #ffffff; stroke-width: 1.7; stroke-linecap: round; animation-delay: 2.00s"></path></svg>
+</button>
+</sc-if>
+</div>

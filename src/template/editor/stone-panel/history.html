@@ -1,0 +1,15 @@
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<button type="button" onClick="{{undo}}" disabled="{{undoDisabled}}" title="{{undoTitle}}" style="height: 38px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #cfc9bd; border-radius: 8px; background: #ffffff; color: #1e1c19; font-size: 13px; font-weight: 600; cursor: pointer; opacity: {{undoOpacity}}"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M9 14 L4 9 L9 4 M4 9 H14 Q20 9 20 15 Q20 20 14 20 H10" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"></path></svg><span>Undo</span></button>
+<button type="button" onClick="{{redo}}" disabled="{{redoDisabled}}" title="{{redoTitle}}" style="height: 38px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #cfc9bd; border-radius: 8px; background: #ffffff; color: #1e1c19; font-size: 13px; font-weight: 600; cursor: pointer; opacity: {{redoOpacity}}"><span>Redo</span><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M15 14 L20 9 L15 4 M20 9 H10 Q4 9 4 15 Q4 20 10 20 H14" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"></path></svg></button>
+</div>
+<span style="font-size: 11px; color: #5d584f">Ctrl+Z to undo · Ctrl+Shift+Z to redo · arrow keys nudge the selected part</span>
+<ol aria-label="Change history" style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 2px; max-height: 260px; overflow-y: auto">
+<sc-for list="{{histRows}}" as="zehi" hint-placeholder-count="4">
+<li style="display: flex">
+<button type="button" onClick="{{zehi.go}}" aria-current="{{zehi.current}}" style="flex-grow: 1; min-height: 32px; display: flex; align-items: center; gap: 8px; padding: 4px 8px; border: 0; border-radius: 6px; background: {{zehi.bg}}; color: {{zehi.fg}}; font-size: 12px; text-align: left; cursor: pointer; text-decoration: {{zehi.deco}}">
+<span style="width: 8px; height: 8px; flex: none; border-radius: 50%; background: {{zehi.dot}}"></span>
+<span style="flex-grow: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{zehi.label}}</span>
+</button>
+</li>
+</sc-for>
+</ol>

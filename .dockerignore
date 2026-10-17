@@ -1,0 +1,9 @@
+.git
+.claude
+.githooks
+knowledge
+docs
+src
+source
+tests
+*.md

@@ -1,0 +1,54 @@
+<sc-if value="{{gIs1}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<!--@shape-tiles {"list": "shapeStd", "item": "sh", "size": "large", "count": 5}-->
+<sc-if value="{{hasMoreShapes}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<!--@heading {"text": "More shapes for your style", "size": "large"}-->
+<!--@shape-tiles {"list": "shapeMore", "item": "sm", "size": "large"}-->
+</div>
+</sc-if>
+<sc-if value="{{mirrorShow}}" hint-placeholder-val="{{false}}">
+<button type="button" onClick="{{toggleMirror}}" aria-pressed="{{mirrorPressed}}" style="min-height: 64px; padding: 10px 14px; display: flex; align-items: center; gap: 14px; border: 2px solid {{mirrorBd}}; border-radius: 12px; background: {{mirrorBg}}; color: #1e1c19; text-align: left; cursor: pointer">
+<svg viewBox="-1 -1 38 26" width="46" height="31" aria-hidden="true" style="flex-shrink: 0"><path d="{{mirrorD}}" style="fill: {{mirrorFill}}"></path></svg>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Mirror the shape on the bottom edge</span><span style="font-size: 13px; color: #4a463f">For flat markers, the bottom follows the top so it looks balanced from every side.</span></span>
+</button>
+</sc-if>
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid #e4dfd5">
+<!--@stone-size-->
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid #e4dfd5">
+<!--@heading {"text": "Flower vases", "size": "large"}-->
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{vaseKindChips}}" as="zvk" hint-placeholder-count="2">
+<button type="button" onClick="{{zvk.pick}}" aria-pressed="{{zvk.pressed}}" style="min-height: 44px; padding: 4px 8px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 2px solid {{zvk.bd}}; border-radius: 10px; background: {{zvk.bg}}; color: #1e1c19; font-size: 15px; line-height: 1.2; cursor: pointer"><svg viewBox="-8 -19 16 20" width="14" height="18" aria-hidden="true" style="flex: none"><path d="{{zvk.icon}}" style="fill: {{zvk.fill}}"></path></svg><span>{{zvk.label}}</span></button>
+</sc-for>
+</div>
+<div style="display: {{vaseOnDisp}}; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; color: #3d3a34">{{vaseSideTitle}}</span>
+<!--@choice-chips {"list": "vaseSideChips", "item": "zvs", "size": "large", "columns": 2, "count": 2}-->
+<div style="display: {{vaseLyDisp}}; flex-direction: column; gap: 6px">
+<span style="font-size: 14px; color: #3d3a34">Side vases at the</span>
+<!--@choice-chips {"list": "vaseLyChips", "item": "zvl", "size": "large", "columns": 3, "count": 3}-->
+</div>
+<div style="display: {{vaseRiseDisp}}; flex-direction: column; gap: 6px">
+<span style="font-size: 14px; color: #3d3a34">Side vase height</span>
+<!--@choice-chips {"list": "vaseHtChips", "item": "zvh", "size": "large", "columns": 4, "count": 4}-->
+</div>
+<span style="font-size: 14px; color: #3d3a34">{{vaseFrontTitle}}</span>
+<!--@choice-chips {"list": "vaseFrontChips", "item": "zvf", "size": "large", "columns": 3, "count": 3}-->
+<div role="group" aria-label="Vase size" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px; border: 1px solid #d8d1c4; border-radius: 10px; background: #ffffff">
+<span style="display: flex; flex-direction: column; gap: 1px"><span style="font-size: 13px; color: #4a463f">Vase size</span><span style="font-size: 15px; font-weight: 600; color: #1e1c19">{{vaseSizeLabel}}</span></span>
+<span style="display: flex; gap: 6px; flex: none"><!--@step-button {"action": "vaseSmaller", "label": "Smaller vases", "glyph": "−", "size": "large"}--><!--@step-button {"action": "vaseLarger", "label": "Larger vases", "glyph": "+", "size": "large"}--></span>
+</div>
+</div>
+</div>
+<div style="display: {{baseShowDisp}}; flex-direction: column; gap: 10px; padding-top: 4px">
+<!--@heading {"text": "Base", "size": "large"}-->
+<!--@stepper {"label": "Base extends past the stone", "aria": "How far the base extends", "value": "baseOverLabel", "minus": "baseOverMinus", "minus_label": "Narrower base", "plus": "baseOverPlus", "plus_label": "Wider base", "size": "large"}-->
+<!--@stepper {"label": "Base depth, front to back", "aria": "Base depth", "value": "baseDepthLabel", "minus": "baseDepthMinus", "minus_label": "Shallower base", "plus": "baseDepthPlus", "plus_label": "Deeper base", "display": "baseDepthDisp", "size": "large"}-->
+<!--@stepper {"label": "Base height", "aria": "Base height", "value": "baseHtLabel", "minus": "baseHtMinus", "minus_label": "Lower base", "plus": "baseHtPlus", "plus_label": "Taller base", "display": "baseSizeDisp", "size": "large"}-->
+</div>
+</div>
+</sc-if>
+

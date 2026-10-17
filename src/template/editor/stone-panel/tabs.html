@@ -1,0 +1,5 @@
+<div role="tablist" aria-label="Panels" style="display: flex; gap: 2px; padding: 8px 12px 0; border-bottom: 1px solid #dcd7cc; flex: none">
+<sc-for list="{{ltabs}}" as="zelt" hint-placeholder-count="3">
+<button type="button" role="tab" onClick="{{zelt.pick}}" aria-selected="{{zelt.pressed}}" style="flex-grow: 1; height: 42px; border: 0; border-bottom: 2px solid {{zelt.bd}}; background: transparent; color: {{zelt.fg}}; font-size: 13px; font-weight: 600; cursor: pointer">{{zelt.label}}</button>
+</sc-for>
+</div>

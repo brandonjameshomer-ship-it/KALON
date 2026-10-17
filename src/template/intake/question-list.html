@@ -1,0 +1,13 @@
+<ol aria-label="Questions" style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+<sc-for list="{{wList}}" as="wl" hint-placeholder-count="6">
+<li>
+<button type="button" onClick="{{wl.go}}" aria-current="{{wl.current}}" style="width: 100%; min-height: 54px; padding: 8px 12px; display: flex; align-items: center; gap: 12px; border: 0; border-radius: 10px; background: {{wl.bg}}; color: #1e1c19; text-align: left; cursor: pointer">
+<span style="width: 30px; height: 30px; flex-shrink: 0; box-sizing: border-box; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; background: {{wl.numBg}}; color: {{wl.numFg}}; border: 1.5px solid {{wl.numBd}}">{{wl.n}}</span>
+<span style="min-width: 0; display: flex; flex-direction: column; gap: 1px">
+<span style="font-size: 16px; font-weight: 600">{{wl.label}}</span>
+<span style="font-size: 14px; color: #4a463f; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{wl.summary}}</span>
+</span>
+</button>
+</li>
+</sc-for>
+</ol>

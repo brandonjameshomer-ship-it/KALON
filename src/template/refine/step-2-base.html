@@ -1,0 +1,27 @@
+<sc-if value="{{gIs2}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{graniteCards}}" as="gc" hint-placeholder-count="5">
+<button type="button" onClick="{{gc.pick}}" aria-pressed="{{gc.pressed}}" style="padding: 10px; display: flex; flex-direction: column; gap: 8px; border: 2px solid {{gc.bd}}; border-radius: 12px; background: {{gc.bg}}; color: #1e1c19; text-align: left; cursor: pointer">
+<span style="display: block; height: 62px; border-radius: 8px; background: {{gc.swatch}}"></span>
+<span style="font-size: 16px; font-weight: 600">{{gc.label}}</span>
+<span style="font-size: 13px; line-height: 1.4; color: #3d3a34">{{gc.note}}</span>
+</button>
+</sc-for>
+</div>
+<div style="display: {{baseMatDisp}}; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid #e4dfd5">
+<!--@heading {"text": "Base granite", "size": "large"}-->
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{baseMats}}" as="zbg" hint-placeholder-count="6">
+<button type="button" onClick="{{zbg.pick}}" aria-pressed="{{zbg.pressed}}" title="{{zbg.label}}" style="width: 64px; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 5px; border: 0; background: transparent; color: #1e1c19; font-size: 12px; cursor: pointer">
+<span style="width: 44px; height: 44px; border-radius: 50%; border: 3px solid {{zbg.ring}}; background: {{zbg.swatch}}"></span>
+<span style="line-height: 1.2; text-align: center">{{zbg.short}}</span>
+</button>
+</sc-for>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.45; color: #3d3a34">{{baseNote}}</p>
+</div>
+</div>
+</sc-if>
+
+

@@ -1,0 +1,59 @@
+<sc-if value="{{gIs4}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<!--@heading {"text": "Main symbol", "size": "large"}-->
+<!--@symbol-tiles {"list": "sym1Tiles", "item": "st", "count": 10}-->
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<!--@heading {"text": "Second symbol", "size": "large"}-->
+<p style="display: {{sym2NoteDisp}}; margin: 0; font-size: 14px; line-height: 1.45; color: #3d3a34">Shown at the bottom of the Centered classic layout.</p>
+<!--@symbol-tiles {"list": "sym2Tiles", "item": "st2", "count": 10}-->
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<!--@heading {"text": "Photo", "size": "large"}-->
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{photoChoices}}" as="pc">
+<button type="button" onClick="{{pc.pick}}" aria-pressed="{{pc.pressed}}" aria-label="{{pc.label}}" style="width: 66px; height: 66px; padding: 2px; border: 2px solid {{pc.bd}}; border-radius: 10px; background: #ffffff; color: #3d3a34; font-size: 13px; cursor: pointer; overflow: hidden">
+<img src="{{pc.url}}" alt="" style="display: {{pc.imgDisp}}; width: 100%; height: 100%; object-fit: cover; border-radius: 7px">
+<span style="display: {{pc.noneDisp}}">No photo</span>
+</button>
+</sc-for>
+<label style="position: relative; width: 66px; height: 66px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px dashed #b3ab9c; border-radius: 10px; background: #ffffff; cursor: pointer" title="Upload a photo">
+<input type="file" accept="image/*" multiple="{{yes}}" onChange="{{onFiles}}" aria-label="Upload a photo" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer">
+<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 5 V19 M5 12 H19" style="fill: none; stroke: {{accent}}; stroke-width: 2.2; stroke-linecap: round"></path></svg>
+</label>
+</div>
+<sc-if value="{{gPhotoOn}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; color: #3d3a34">Placement</span>
+<!--@choice-chips {"list": "placeChips", "item": "pl", "size": "large", "columns": 3}-->
+<span style="font-size: 14px; color: #3d3a34">Style</span>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{lookChips}}" as="zlk" hint-placeholder-count="4">
+<button type="button" onClick="{{zlk.pick}}" aria-pressed="{{zlk.pressed}}" title="{{zlk.sub}}" style="padding: 6px 4px 8px; display: flex; flex-direction: column; align-items: center; gap: 5px; border: 2px solid {{zlk.bd}}; border-radius: 10px; background: {{zlk.bg}}; cursor: pointer">
+<svg viewBox="0 0 48 60" width="48" height="60" aria-hidden="true" style="display: block; border-radius: 6px; isolation: isolate"><rect width="48" height="60" style="fill: {{lkBg}}"></rect><image href="{{zlk.url}}" width="48" height="60" preserveAspectRatio="xMidYMid slice" style="filter: {{zlk.f}}; mix-blend-mode: {{zlk.blend}}"></image></svg>
+<span style="font-size: 14px; font-weight: 600; color: #1e1c19">{{zlk.label}}</span>
+</button>
+</sc-for>
+</div>
+<span style="display: {{photoCarvedDisp}}; font-size: 14px; line-height: 1.45; color: #3d3a34">Carved into the granite itself, drawn from their photo. No medallion needed.</span>
+<span style="font-size: 14px; color: #3d3a34">Shape</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{photoShapeChips}}" as="zps" hint-placeholder-count="4">
+<button type="button" onClick="{{zps.pick}}" aria-pressed="{{zps.pressed}}" style="height: 44px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 2px solid {{zps.bd}}; border-radius: 10px; background: {{zps.bg}}; color: #1e1c19; font-size: 15px; cursor: pointer"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="{{zps.sx}}" y="{{zps.sy}}" width="{{zps.sw}}" height="{{zps.sh}}" rx="{{zps.srx}}" ry="{{zps.sry}}" style="fill: none; stroke: currentColor; stroke-width: 1.8"></rect></svg><span>{{zps.label}}</span></button>
+</sc-for>
+</div>
+<div style="display: {{photoPlainDisp}}; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; color: #3d3a34">Finish</span>
+<!--@choice-chips {"list": "photoFinishChips", "item": "pf", "size": "large", "columns": 2}-->
+<span style="font-size: 14px; color: #3d3a34">Colors</span>
+<!--@choice-chips {"list": "photoToneChips", "item": "zpt", "size": "large", "columns": 2}-->
+<span style="display: {{photoLaserToneDisp}}; font-size: 13px; line-height: 1.45; color: #5d584f">Laser etching is always black and white. Choose Color for a porcelain photo.</span>
+</div>
+<span style="display: {{laserWarnDisp}}; font-size: 14px; line-height: 1.45; color: #6b4a14">Laser etching barely shows on lighter granite. Choose a porcelain medallion or a darker granite.</span>
+</div>
+</sc-if>
+</div>
+</div>
+</sc-if>
+

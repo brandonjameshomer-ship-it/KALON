@@ -1,0 +1,9 @@
+# Keep LF in every clone. The build output is compared byte for byte, and a CRLF checkout on Windows would fail `python src/build.py --check`.
+* text=auto eol=lf
+
+# Shell scripts and git hooks must keep LF endings or their shebang breaks on macOS and Linux.
+.githooks/* text eol=lf
+*.sh text eol=lf
+
+# The committed code graph is SQLite. This line lets `sh .githooks/install.sh` render it as JSON in git diffs.
+knowledge/code_graph.db binary diff=codegraph

@@ -1,0 +1,17 @@
+{
+  "enabledPlugins": {
+    "codebase-kg@alexk413x": true,
+    "ide-agent-tabs@alexk413x": true,
+    "sentinel-swarm@alexk413x": true,
+    "the-index@alexk413x": true
+  },
+  "extraKnownMarketplaces": {
+    "alexk413x": {
+      "source": {
+        "source": "github",
+        "repo": "Alexk413x/marketplace"
+      },
+      "autoUpdate": true
+    }
+  }
+}

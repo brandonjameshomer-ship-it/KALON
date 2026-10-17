@@ -1,0 +1,24 @@
+<sc-if value="{{wIs_quotes}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<!--@check-card {"checked": "noQuotes", "on_change": "toggleNoQuotes", "title": "Leave quotes off the stone", "note": "Just their name and dates, with no added words."}-->
+<div style="display: {{quoteFieldsDisp}}; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #4a463f">We’ll use exactly the words you share. Leave these blank and we’ll suggest a few gentle ones you can keep or change.</p>
+<sc-for list="{{quoteRows}}" as="q" hint-placeholder-count="1">
+<div style="display: flex; gap: 10px; align-items: flex-start">
+<label style="flex-grow: 1; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 18px; font-weight: 600">{{q.label}}</span>
+<textarea class="hs-big" rows="2" value="{{q.value}}" onChange="{{q.onChange}}" placeholder="{{q.ph}}" style="box-sizing: border-box; min-height: 92px; padding: 14px 18px; resize: vertical; border: 2px solid #cfc9bd; border-radius: 12px; background: #ffffff; font-size: 22px; line-height: 1.4; color: #1e1c19"></textarea>
+</label>
+<button type="button" onClick="{{q.remove}}" aria-label="{{q.removeLabel}}" style="display: {{q.rmDisp}}; margin-top: 34px; width: 52px; height: 52px; flex-shrink: 0; align-items: center; justify-content: center; border: 1px solid #cfc9bd; border-radius: 10px; background: #ffffff; cursor: pointer">
+<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6 L18 18 M18 6 L6 18" style="fill: none; stroke: #4a463f; stroke-width: 2; stroke-linecap: round"></path></svg>
+</button>
+</div>
+</sc-for>
+<button type="button" onClick="{{addQuote}}" style="display: {{addQuoteDisp}}; align-self: flex-start; height: 52px; padding: 0 18px; align-items: center; gap: 10px; border: 2px dashed #b3ab9c; border-radius: 12px; background: #ffffff; color: #1e1c19; font-size: 18px; font-weight: 500; cursor: pointer">
+<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5 V19 M5 12 H19" style="fill: none; stroke: {{accent}}; stroke-width: 2.4; stroke-linecap: round"></path></svg>
+<span>Add another quote</span>
+</button>
+</div>
+</div>
+</sc-if>
+

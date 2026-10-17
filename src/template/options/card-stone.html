@@ -1,0 +1,56 @@
+<ellipse cx="{{o.shCx}}" cy="{{o.shCy}}" rx="{{o.shRx}}" ry="{{o.shRy}}" style="display: {{o.shDisp}}; fill: url(#{{o.gShadow}})"></ellipse>
+<filter id="{{o.fShBlur}}" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="{{o.fShStd}}"></feGaussianBlur></filter>
+<filter id="{{o.fShBlur2}}" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="{{o.fShStd2}}"></feGaussianBlur></filter>
+<path d="{{o.fpD}}" transform="{{o.fpT2}}" style="display: {{o.fpDisp}}; fill: #3c3226; opacity: 0.42; filter: url(#{{o.fShBlur}})"></path>
+<g style="display: {{o.baseDisp}}">
+<clipPath id="{{o.clipBase}}"><rect x="{{o.baseX}}" y="{{o.baseY}}" width="{{o.baseW}}" height="{{o.baseH}}" rx="2"></rect></clipPath>
+<rect x="{{o.baseX}}" y="{{o.baseY}}" width="{{o.baseW}}" height="{{o.baseH}}" rx="2" style="fill: url(#{{o.gBase}}); stroke: {{o.bEdge}}; stroke-width: 1"></rect>
+<rect x="{{o.baseX}}" y="{{o.baseY}}" width="{{o.baseW}}" height="{{o.baseH}}" rx="2" style="fill: #ffffff; opacity: {{o.bGrainOp}}; filter: url(#{{o.fGrain}})"></rect>
+<rect x="{{o.baseX}}" y="{{o.baseY}}" width="{{o.baseW}}" height="{{o.baseH}}" rx="2" style="fill: url(#{{o.gSheen}}); opacity: {{o.bSheenOp}}"></rect>
+<g style="display: {{o.bRockDisp}}; clip-path: url(#{{o.clipBase}})">
+<rect x="{{o.baseX}}" y="{{o.baseY}}" width="{{o.baseW}}" height="{{o.baseH}}" rx="2" style="fill: none; stroke: {{o.bRockCol}}; stroke-width: {{o.bRockW}}"></rect>
+<rect x="{{o.baseX}}" y="{{o.baseY}}" width="{{o.baseW}}" height="{{o.baseH}}" rx="2" style="fill: none; stroke: {{o.bRockCol}}; stroke-width: {{o.bRockW2}}; stroke-dasharray: {{o.bRockDash}}; stroke-linecap: round"></rect>
+<rect x="{{o.baseX}}" y="{{o.baseY}}" width="{{o.baseW}}" height="{{o.baseH}}" rx="2" style="fill: none; stroke: {{o.bRockCol2}}; stroke-width: {{o.bRockW3}}; stroke-dasharray: {{o.bRockDash2}}; stroke-linecap: round; opacity: 0.35"></rect>
+</g>
+<rect x="{{o.baseX}}" y="{{o.baseY}}" width="{{o.baseW}}" height="{{o.baseH}}" rx="2" style="fill: none; stroke: {{o.bEdge}}; stroke-width: 1"></rect>
+</g>
+<path d="{{o.stoneD}}" transform="{{o.lyShadowTf}}" style="display: {{o.lyShadowDisp}}; fill: #000000; opacity: 0.45; filter: url(#{{o.fShBlur2}})"></path>
+<path d="{{o.stoneD}}" style="fill: {{o.faceS}}; stroke: {{o.edge}}; stroke-width: 1.4"></path>
+<path d="{{o.stoneD}}" style="fill: #ffffff; opacity: {{o.grainOp}}; filter: url(#{{o.fGrain}})"></path>
+<path d="{{o.stoneD}}" style="fill: url(#{{o.gSheen}}); opacity: {{o.sheenOp}}"></path>
+<clipPath id="{{o.clipStone}}"><path d="{{o.stoneD}}"></path></clipPath>
+<g style="display: {{o.rockDisp}}; clip-path: url(#{{o.clipStone}})">
+<path d="{{o.stoneD}}" style="fill: none; stroke: {{o.rockCol}}; stroke-width: {{o.rockW}}"></path>
+<path d="{{o.stoneD}}" style="fill: none; stroke: {{o.rockCol}}; stroke-width: {{o.rockW2}}; stroke-dasharray: {{o.rockDash}}; stroke-linecap: round"></path>
+<path d="{{o.stoneD}}" style="fill: none; stroke: {{o.rockCol}}; stroke-width: {{o.rockW4}}; stroke-dasharray: {{o.rockDash3}}; stroke-dashoffset: {{o.rockOff}}; stroke-linecap: round"></path>
+<path d="{{o.stoneD}}" style="fill: none; stroke: {{o.rockCol2}}; stroke-width: {{o.rockW3}}; stroke-dasharray: {{o.rockDash2}}; stroke-linecap: round; opacity: 0.35"></path>
+<path d="{{o.stoneD}}" style="fill: none; stroke: {{o.edge}}; stroke-width: {{o.rockW5}}; opacity: 0.45"></path>
+</g>
+<path d="{{o.stoneD}}" style="display: {{o.pillowDisp}}; fill: url(#{{o.gPillow}})"></path>
+<path d="{{o.stoneD}}" transform="{{o.bevelTf}}" style="display: {{o.bevelDisp}}; fill: none; stroke: #ffffff; stroke-opacity: 0.1; stroke-width: {{o.bevelSw}}"></path>
+<path d="{{o.stoneD}}" style="display: {{o.lightDisp}}; fill: url(#{{o.gWarm}}); mix-blend-mode: soft-light"></path>
+<sc-for list="{{o.vases}}" as="zva" hint-placeholder-count="0">
+<g transform="{{zva.tf}}">
+<ellipse cx="0" cy="{{zva.shCy}}" rx="{{zva.shRx}}" ry="{{zva.shRy}}" style="display: {{zva.shDisp}}; fill: #000000; opacity: 0.35; filter: url(#{{o.fShBlur2}})"></ellipse>
+<g style="display: {{zva.sideDisp}}">
+<rect x="{{zva.plX}}" y="{{zva.plY}}" width="{{zva.plW}}" height="{{zva.plH}}" rx="1.5" style="display: {{zva.brDisp}}; fill: #55595f; stroke: rgba(0, 0, 0, 0.4); stroke-width: 0.8"></rect>
+<rect x="{{zva.brX}}" y="{{zva.brY}}" width="{{zva.brW}}" height="{{zva.brH}}" rx="1.5" style="display: {{zva.brDisp}}; fill: #6b6f76; stroke: rgba(0, 0, 0, 0.35); stroke-width: 0.8"></rect>
+<path d="{{zva.d}}" style="fill: {{zva.fill}}; stroke: {{zva.stroke}}; stroke-width: 0.9"></path>
+<path d="{{zva.d}}" style="display: {{zva.grainDisp}}; fill: #ffffff; opacity: 0.3; filter: url(#{{o.fGrain}})"></path>
+<path d="{{zva.ringD}}" style="fill: none; stroke: {{zva.ringCol}}; stroke-width: 0.9; opacity: 0.45"></path>
+<rect x="{{zva.clX}}" y="{{zva.clY}}" width="{{zva.clW}}" height="{{zva.clH}}" rx="1.5" style="display: {{zva.brDisp}}; fill: #7a7e85; stroke: rgba(0, 0, 0, 0.4); stroke-width: 0.8"></rect>
+<ellipse cx="0" cy="{{zva.rimCy}}" rx="{{zva.rimRx}}" ry="{{zva.rimRy}}" style="fill: {{zva.rimFill}}"></ellipse>
+</g>
+<g style="display: {{zva.lyDisp}}">
+<circle cx="{{zva.lySh}}" cy="{{zva.lySh}}" r="{{zva.lyR}}" style="fill: #000000; opacity: 0.4; filter: url(#{{o.fShBlur2}})"></circle>
+<circle cx="0" cy="0" r="{{zva.lyR}}" style="fill: {{zva.fill}}; stroke: {{zva.stroke}}; stroke-width: 0.9"></circle>
+<circle cx="0" cy="0" r="{{zva.lyR}}" style="display: {{zva.grainDisp}}; fill: #ffffff; opacity: 0.3; filter: url(#{{o.fGrain}})"></circle>
+<circle cx="0" cy="0" r="{{zva.lyR3}}" style="fill: none; stroke: {{zva.ringCol}}; stroke-width: 0.9; opacity: 0.5"></circle>
+<circle cx="0" cy="0" r="{{zva.lyR2}}" style="fill: {{zva.rimFill}}"></circle>
+</g>
+</g>
+</sc-for>
+<path d="{{o.spineD}}" style="display: {{o.spineDisp}}; fill: none; stroke: {{o.edge}}; stroke-width: 1.4; opacity: 0.85"></path>
+<path d="{{o.wDimD}}" style="display: {{o.dimDisp}}; fill: none; stroke: #7d766b; stroke-width: 1; vector-effect: non-scaling-stroke"></path>
+<path d="{{o.hDimD}}" style="display: {{o.dimDisp}}; fill: none; stroke: #7d766b; stroke-width: 1; vector-effect: non-scaling-stroke"></path>
+<path d="{{o.guideD}}" style="display: {{o.guideDisp}}; fill: none; stroke: #22d3ee; stroke-width: 1.2; stroke-dasharray: 6 5; vector-effect: non-scaling-stroke"></path>

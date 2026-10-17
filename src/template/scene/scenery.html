@@ -1,0 +1,57 @@
+<div style="position: absolute; left: 0; top: 0; width: 1440px; height: 836px; transform: translateY({{landLiftN}}px)">
+<sc-for list="{{scn.things}}" as="qth" hint-placeholder-count="0">
+<svg viewBox="0 0 1440 836" width="1440" height="836" style="position: absolute; left: 0; top: 0; display: block"><path d="{{qth.d}}" style="fill: {{qth.c}}"></path></svg>
+</sc-for>
+<!--@shimmer-layer {"d": "scn.shimD", "duration": 5}-->
+<!--@shimmer-layer {"d": "scn.shimD2", "duration": 6.5, "delay": -2.8}-->
+<div style="position: absolute; left: 1235px; top: 372px; width: 32px; height: 32px; border-radius: 50%; display: {{scn.blinkDisp}}; background: radial-gradient(circle, #ffefb8 0 22%, rgba(255, 230, 160, 0.45) 40%, rgba(255, 230, 160, 0) 70%); animation: hsBlink 4s ease-in-out infinite"></div>
+<div style="position: absolute; left: {{scn.boatL}}px; top: {{scn.boatT}}px; width: 60px; height: 62px; display: {{scn.boatDisp}}; animation: hsBobB 4.5s ease-in-out infinite">
+<svg width="60" height="62" style="display: block; overflow: visible">
+<path d="{{scn.boatSailD}}" style="fill: {{scn.boatSailC}}"></path>
+<path d="{{scn.boatHullD}}" style="fill: #8a5a44"></path>
+<path d="{{scn.boatRimD}}" style="fill: #b58362"></path>
+</svg>
+</div>
+<div style="position: absolute; left: {{scn.treeL}}px; top: {{scn.treeT}}px; width: {{scn.treeW}}px; height: {{scn.treeH}}px; display: {{scn.treeDisp}}; transform-origin: 50.5% 97%; animation: hsBreezeT 7s ease-in-out infinite; animation-delay: {{scn.treeDelay}}s">
+<svg viewBox="0 0 360 450" width="{{scn.treeW}}" height="{{scn.treeH}}" style="display: block; overflow: visible">
+<path d="{{scn.treeTrunkD}}" style="fill: {{scn.trunk}}"></path>
+<path d="{{scn.treeBarkD}}" style="fill: {{scn.trunkDark}}; opacity: 0.5"></path>
+<path d="{{scn.treeBodyD}}" style="fill: {{scn.leafBody}}"></path>
+<path d="{{scn.treeShadeD}}" style="fill: {{scn.leafShade}}; opacity: 0.85"></path>
+<path d="{{scn.treeMidD}}" style="fill: {{scn.leafMid}}; opacity: 0.8"></path>
+<path d="{{scn.treeLightD}}" style="fill: {{scn.leafLight}}; opacity: 0.8"></path>
+<path d="{{scn.treeFruitD}}" style="fill: {{scn.fruitC}}"></path>
+<path d="{{scn.treeFruit2D}}" style="fill: {{scn.fruit2C}}"></path>
+</svg>
+</div>
+<!--@swaying-plants {"list": "scn.back", "item": "qgb"}-->
+<sc-for list="{{scn.smoke}}" as="qsm" hint-placeholder-count="0">
+<div style="position: absolute; left: {{qsm.x}}px; top: {{qsm.y}}px; width: 22px; height: 40px; transform-origin: 50% 100%; opacity: 0; animation: hsWisp 11s ease-out infinite; animation-delay: {{qsm.delay}}s">
+<svg width="22" height="40" style="display: block; overflow: visible"><path d="M10 40 C6 33 14 29 12 22 C10.5 16 5 14 8.5 8 C10 5 13 3 15 0 L16 1.2 C14.5 3.6 12 5.8 11 8.6 C9 14 14.5 16 15 22 C16 29 9.5 33 12.8 40 Z" style="fill: url(#lpWisp)"></path></svg>
+</div>
+</sc-for>
+<sc-for list="{{scn.flies}}" as="qbf" hint-placeholder-count="0">
+<div style="position: absolute; left: {{qbf.x}}px; top: {{qbf.y}}px; width: 18px; height: 14px; animation: hsFlit {{qbf.dur}}s ease-in-out infinite; animation-delay: {{qbf.delay}}s">
+<div style="width: 18px; height: 14px; animation: hsFlap {{qbf.flap}}s ease-in-out infinite">
+<svg width="18" height="14" style="display: block"><path d="M9 7 C4 0 0 2 1.5 6 C0 10 5 12 9 8 Z M9 7 C14 0 18 2 16.5 6 C18 10 13 12 9 8 Z" style="fill: {{qbf.c}}"></path><path d="M8.4 3 H9.6 V11 H8.4 Z" style="fill: #4a3a2e"></path></svg>
+</div>
+</div>
+</sc-for>
+<sc-for list="{{scn.fall}}" as="qpf" hint-placeholder-count="0">
+<div style="position: absolute; left: {{qpf.x}}px; top: {{qpf.y}}px; width: {{qpf.w}}px; height: {{qpf.h}}px; border-radius: {{qpf.rad}}; background: {{qpf.c}}; opacity: 0; animation: {{qpf.anim}} {{qpf.dur}}s linear infinite; animation-delay: {{qpf.delay}}s"></div>
+</sc-for>
+<sc-for list="{{scn.glows}}" as="qgw" hint-placeholder-count="0">
+<div style="position: absolute; left: {{qgw.x}}px; top: {{qgw.y}}px; width: 10px; height: 10px; border-radius: 50%; background: radial-gradient(circle, #fff6c4 0 28%, rgba(255, 228, 140, 0.4) 45%, rgba(255, 228, 140, 0) 72%); animation: hsTwinkle {{qgw.tw}}s ease-in-out infinite {{qgw.twd}}s, hsWander {{qgw.wd}}s ease-in-out infinite {{qgw.wdd}}s"></div>
+</sc-for>
+<sc-for list="{{scn.birds}}" as="qbd" hint-placeholder-count="1">
+<div style="position: absolute; left: 0; top: {{qbd.y}}px; width: 32px; height: 16px; animation: hsBird {{qbd.dur}}s linear infinite; animation-delay: {{qbd.delay}}s">
+<div style="width: 32px; height: 16px; transform: scale({{qbd.s}})">
+<div style="position: relative; width: 32px; height: 16px; animation: hsGlide {{qbd.fd}}s ease-in-out infinite; animation-delay: {{qbd.fdl}}s">
+<div style="position: absolute; left: 1px; top: 2px; width: 15px; height: 10px; transform-origin: 100% 80%; animation: hsWingL {{qbd.fd}}s ease-in-out infinite; animation-delay: {{qbd.fdl}}s"><svg width="15" height="10" style="display: block; overflow: visible"><path d="M15 8 Q9 1.5 0.5 5.5" style="fill: none; stroke: #6f695f; stroke-width: 1.8; stroke-linecap: round"></path></svg></div>
+<div style="position: absolute; left: 16px; top: 2px; width: 15px; height: 10px; transform-origin: 0% 80%; animation: hsWingR {{qbd.fd}}s ease-in-out infinite; animation-delay: {{qbd.fdl}}s"><svg width="15" height="10" style="display: block; overflow: visible"><path d="M0 8 Q6 1.5 14.5 5.5" style="fill: none; stroke: #6f695f; stroke-width: 1.8; stroke-linecap: round"></path></svg></div>
+<div style="position: absolute; left: 14.2px; top: 8.2px; width: 3.6px; height: 3px; border-radius: 50%; background: #6f695f"></div>
+</div>
+</div>
+</div>
+</sc-for>
+</div>

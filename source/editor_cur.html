@@ -1,0 +1,389 @@
+<aside aria-label="Design tools" style="position: absolute; left: 0; top: 64px; width: 300px; height: 836px; box-sizing: border-box; padding: 20px; overflow-y: auto; background: #fbfaf7; border-right: 1px solid #dcd7cc; z-index: 10; transform: translateX({{lpX}}px); visibility: {{panelVis}}; transition: {{panelTrans}}">
+<div style="display: flex; flex-direction: column; gap: 24px">
+
+<section style="display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5d584f">Stone</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{shapes}}" as="sh" hint-placeholder-count="5">
+<button type="button" onClick="{{sh.pick}}" aria-pressed="{{sh.pressed}}" aria-label="{{sh.label}}" title="{{sh.label}}" style="height: 60px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 6px 0; border-radius: 8px; border: 1px solid {{sh.bd}}; background: {{sh.bg}}; cursor: pointer">
+<svg viewBox="-1 -1 38 26" width="34" height="23" aria-hidden="true"><path d="{{sh.d}}" style="fill: {{sh.fill}}"></path></svg>
+<span style="font-size: 10px; color: #3d3a34">{{sh.short}}</span>
+</button>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; gap: 6px">
+<sc-for list="{{materials}}" as="mt" hint-placeholder-count="5">
+<button type="button" onClick="{{mt.pick}}" aria-pressed="{{mt.pressed}}" aria-label="{{mt.label}}" title="{{mt.label}}" style="width: 44px; height: 44px; padding: 3px; border-radius: 50%; border: 2px solid {{mt.ring}}; background: transparent; cursor: pointer">
+<span style="display: block; width: 100%; height: 100%; border-radius: 50%; background: {{mt.swatch}}"></span>
+</button>
+</sc-for>
+</div>
+<span style="font-size: 13px; color: #3d3a34">{{materialLabel}} granite</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; gap: 8px">
+<span style="flex-grow: 1; font-size: 13px; color: #3d3a34">Die width</span>
+<button type="button" onClick="{{wMinus}}" aria-label="Make the stone 2 inches narrower" style="width: 44px; height: 40px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; font-size: 18px; color: #1e1c19; cursor: pointer">−</button>
+<span style="width: 52px; text-align: center; font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums">{{wLabel}}</span>
+<button type="button" onClick="{{wPlus}}" aria-label="Make the stone 2 inches wider" style="width: 44px; height: 40px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; font-size: 18px; color: #1e1c19; cursor: pointer">+</button>
+</div>
+<div style="display: flex; align-items: center; gap: 8px">
+<span style="flex-grow: 1; font-size: 13px; color: #3d3a34">Die height</span>
+<button type="button" onClick="{{hMinus}}" aria-label="Make the stone 1 inch shorter" style="width: 44px; height: 40px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; font-size: 18px; color: #1e1c19; cursor: pointer">−</button>
+<span style="width: 52px; text-align: center; font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums">{{hLabel}}</span>
+<button type="button" onClick="{{hPlus}}" aria-label="Make the stone 1 inch taller" style="width: 44px; height: 40px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; font-size: 18px; color: #1e1c19; cursor: pointer">+</button>
+</div>
+</div>
+<button type="button" onClick="{{bestSize}}" style="height: 40px; padding: 0 12px; border: 1px solid {{accent}}; border-radius: 8px; background: #ffffff; color: {{accent}}; font-size: 13px; font-weight: 600; cursor: pointer">Best size for this lettering</button>
+<p aria-live="polite" style="display: {{sizeMsgDisp}}; margin: 0; font-size: 12px; line-height: 1.4; color: #23553f">{{sizeMsg}}</p>
+<label style="display: {{baseShowDisp}}; align-items: center; gap: 10px; min-height: 36px; font-size: 13px; color: #3d3a34; cursor: pointer">
+<input type="checkbox" checked="{{base}}" onChange="{{toggleBase}}" style="width: 20px; height: 20px; margin: 0; accent-color: {{accent}}">
+<span>Show base ({{baseLabel}})</span>
+</label>
+<div style="display: {{baseMatDisp}}; flex-wrap: wrap; align-items: center; gap: 6px">
+<span style="font-size: 12px; color: #4a463f; margin-right: 2px">Base granite</span>
+<sc-for list="{{baseMats}}" as="zbm" hint-placeholder-count="6">
+<button type="button" onClick="{{zbm.pick}}" aria-pressed="{{zbm.pressed}}" aria-label="Base: {{zbm.label}}" title="{{zbm.label}}" style="width: 28px; height: 28px; padding: 0; border-radius: 50%; border: 2px solid {{zbm.ring}}; background: {{zbm.swatch}}; cursor: pointer"></button>
+</sc-for>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5d584f">Add lettering</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{letterPresets}}" as="lp" hint-placeholder-count="4">
+<button type="button" onClick="{{lp.add}}" style="height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 12px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; color: #1e1c19; font-size: 13px; font-weight: 500; cursor: pointer">
+<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 5 V19 M5 12 H19" style="fill: none; stroke: {{accent}}; stroke-width: 2.2; stroke-linecap: round"></path></svg>
+<span>{{lp.label}}</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5d584f">Photos</h2>
+<sc-if value="{{hasPhotos}}" hint-placeholder-val="{{false}}">
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{photoTiles}}" as="pt">
+<button type="button" onClick="{{pt.add}}" aria-label="{{pt.label}}" title="{{pt.label}}" style="height: 76px; padding: 0; border: 1px solid #d3cdc1; border-radius: 8px; overflow: hidden; background: #efece5; cursor: pointer">
+<img src="{{pt.url}}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block">
+</button>
+</sc-for>
+</div>
+<span style="font-size: 12px; color: #5d584f">Click a photo to place it on the stone.</span>
+</sc-if>
+<label style="position: relative; height: 44px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px dashed #b3ab9c; border-radius: 8px; background: #ffffff; font-size: 13px; font-weight: 500; cursor: pointer">
+<input type="file" accept="image/*" multiple="{{yes}}" onChange="{{onFiles}}" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer">
+<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 16 V4 M7 9 L12 4 L17 9 M4 15 V19 Q4 20 5 20 H19 Q20 20 20 19 V15" style="fill: none; stroke: {{accent}}; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+<span>Upload a photo</span>
+</label>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5d584f">Symbol library</h2>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{symbolTiles}}" as="sy" hint-placeholder-count="16">
+<button type="button" onClick="{{sy.add}}" aria-label="{{sy.aria}}" title="{{sy.label}}" style="height: 70px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 4px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; cursor: pointer">
+<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true"><path d="{{sy.d}}" style="fill: {{sy.fill}}; stroke: {{sy.stroke}}; stroke-width: {{sy.sw}}; fill-rule: evenodd; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+<span style="font-size: 10px; color: #3d3a34; white-space: nowrap">{{sy.short}}</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5d584f">Border</h2>
+<button type="button" onClick="{{addBorder}}" style="min-height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 12px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; color: #1e1c19; font-size: 13px; font-weight: 500; cursor: pointer; text-align: left">
+<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 5 V19 M5 12 H19" style="fill: none; stroke: {{accent}}; stroke-width: 2.2; stroke-linecap: round"></path></svg>
+<span>Add a border that follows the stone</span>
+</button>
+</section>
+</div>
+</aside>
+
+<aside aria-label="Layers, measurements and handoff" style="position: absolute; left: 1080px; top: 64px; width: 360px; height: 836px; box-sizing: border-box; display: flex; flex-direction: column; background: #fbfaf7; border-left: 1px solid #dcd7cc; z-index: 10; transform: translateX({{rpX}}px); visibility: {{panelVis}}; transition: {{panelTrans}}">
+<div style="display: flex; gap: 4px; padding: 14px 16px 0; border-bottom: 1px solid #dcd7cc">
+<sc-for list="{{rtabs}}" as="t" hint-placeholder-count="3">
+<button type="button" onClick="{{t.pick}}" aria-pressed="{{t.pressed}}" style="flex-grow: 1; height: 42px; border: 0; border-bottom: 2px solid {{t.bd}}; background: transparent; color: {{t.fg}}; font-size: 13px; font-weight: 600; cursor: pointer">{{t.label}}</button>
+</sc-for>
+</div>
+<div style="flex-grow: 1; overflow-y: auto; padding: 16px 20px 28px">
+
+<sc-if value="{{isTabLayers}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<sc-if value="{{hasIssues}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 10px; background: #fbf1df; border: 1px solid #e6c68d">
+<span style="font-size: 13px; font-weight: 600; color: #5e4012">{{issueTitle}}</span>
+<sc-for list="{{issues}}" as="is">
+<button type="button" onClick="{{is.select}}" style="min-height: 32px; padding: 4px 0; border: 0; background: transparent; color: #5e4012; font-size: 12px; line-height: 1.45; text-align: left; cursor: pointer; text-decoration: underline; text-underline-offset: 2px">{{is.text}}</button>
+</sc-for>
+<button type="button" onClick="{{reflow}}" style="align-self: flex-start; height: 36px; padding: 0 12px; border: 1px solid #c99a4a; border-radius: 8px; background: #ffffff; color: #5e4012; font-size: 12px; font-weight: 600; cursor: pointer">Even out vertical spacing</button>
+</div>
+</sc-if>
+<sc-if value="{{noIssues}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 10px; background: #e4efe8; color: #23553f; font-size: 13px; font-weight: 600">
+<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12.5 L10 17 L19 7" style="fill: none; stroke: #23553f; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+<span>Everything will carve beautifully</span>
+</div>
+</sc-if>
+
+<section style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: baseline; justify-content: space-between">
+<h2 style="margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5d584f">Layers</h2>
+<span style="font-size: 12px; color: #5d584f">{{layerCount}} · top of stack first</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; max-height: 262px; overflow-y: auto">
+<sc-for list="{{layerRows}}" as="r" hint-placeholder-count="6">
+<div style="display: flex; align-items: center; border-radius: 8px; border: 1px solid {{r.bd}}; background: {{r.bg}}">
+<button type="button" onClick="{{r.select}}" aria-pressed="{{r.pressed}}" style="flex-grow: 1; min-width: 0; height: 44px; display: flex; align-items: center; gap: 10px; padding: 0 10px; border: 0; background: transparent; cursor: pointer; text-align: left">
+<span style="width: 26px; height: 26px; flex-shrink: 0; border-radius: 6px; background: #efece5; display: flex; align-items: center; justify-content: center">
+<svg viewBox="{{r.iconVB}}" width="16" height="16" aria-hidden="true"><path d="{{r.iconD}}" style="fill: {{r.iconFill}}; stroke: {{r.iconStroke}}; stroke-width: {{r.iconSW}}; fill-rule: evenodd; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+</span>
+<span style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column">
+<span style="font-size: 13px; font-weight: 600; color: {{r.nameColor}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.name}}</span>
+<span style="font-size: 11px; color: #5d584f; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.sub}}</span>
+</span>
+</button>
+<button type="button" onClick="{{r.toggle}}" aria-label="{{r.eyeLabel}}" style="width: 44px; height: 44px; flex-shrink: 0; border: 0; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="{{r.eyeD}}" style="fill: none; stroke: {{r.eyeColor}}; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+</button>
+</div>
+</sc-for>
+</div>
+</section>
+
+<sc-if value="{{noSel}}" hint-placeholder-val="{{false}}">
+<p style="margin: 0; padding-top: 14px; border-top: 1px solid #dcd7cc; font-size: 13px; line-height: 1.5; color: #5d584f">Select a layer, or drag lettering, symbols and photos on the stone.</p>
+</sc-if>
+
+<sc-if value="{{hasSel}}" hint-placeholder-val="{{true}}">
+<section style="display: flex; flex-direction: column; gap: 16px; padding-top: 14px; border-top: 1px solid #dcd7cc">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<h2 style="margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5d584f">Inspector</h2>
+<span style="font-size: 16px; font-weight: 600">{{selName}}</span>
+</div>
+
+<sc-if value="{{selIsText}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<label style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; color: #5d584f">Inscription (one line per row, up to 4)</span>
+<textarea rows="2" value="{{selText}}" onChange="{{onText}}" style="box-sizing: border-box; padding: 10px 12px; resize: vertical; border: 1px solid #cfc9bd; border-radius: 8px; background: #ffffff; font-size: 14px; line-height: 1.45; color: #1e1c19"></textarea>
+</label>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; color: #5d584f">Typeface</span>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{fontPills}}" as="fp" hint-placeholder-count="6">
+<button type="button" onClick="{{fp.pick}}" aria-pressed="{{fp.pressed}}" style="height: 54px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border: 1px solid {{fp.bd}}; border-radius: 8px; background: {{fp.bg}}; color: #1e1c19; cursor: pointer">
+<span style="font-family: {{fp.family}}; font-style: {{fp.fstyle}}; font-size: 20px; line-height: 1">Aa</span>
+<span style="font-size: 10px; color: #3d3a34">{{fp.label}}</span>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; font-size: 12px"><span style="color: #5d584f">Letter height (capitals)</span><span style="font-weight: 600; font-variant-numeric: tabular-nums">{{selHtLabel}}</span></div>
+<input type="range" min="0.5" max="4" step="0.05" value="{{selHt}}" onChange="{{onHt}}" aria-label="Letter height in inches" style="width: 100%; height: 28px; margin: 0; accent-color: {{accent}}">
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; font-size: 12px"><span style="color: #5d584f">Letter spacing</span><span style="font-weight: 600; font-variant-numeric: tabular-nums">{{selTrackLabel}}</span></div>
+<input type="range" min="0" max="0.4" step="0.01" value="{{selTrack}}" onChange="{{onTrack}}" aria-label="Letter spacing in em" style="width: 100%; height: 28px; margin: 0; accent-color: {{accent}}">
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{selIsSymbol}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; color: #5d584f">Symbol</span>
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{symbolSwap}}" as="ss" hint-placeholder-count="12">
+<button type="button" onClick="{{ss.pick}}" aria-pressed="{{ss.pressed}}" aria-label="{{ss.label}}" title="{{ss.label}}" style="height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid {{ss.bd}}; border-radius: 8px; background: {{ss.bg}}; cursor: pointer; padding: 0">
+<svg viewBox="0 0 100 100" width="24" height="24" aria-hidden="true"><path d="{{ss.d}}" style="fill: {{ss.fill}}; stroke: {{ss.stroke}}; stroke-width: {{ss.sw}}; fill-rule: evenodd; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; font-size: 12px"><span style="color: #5d584f">Symbol size</span><span style="font-weight: 600; font-variant-numeric: tabular-nums">{{selSizeLabel}}</span></div>
+<input type="range" min="1" max="12" step="0.1" value="{{selSize}}" onChange="{{onSize}}" aria-label="Symbol size in inches" style="width: 100%; height: 28px; margin: 0; accent-color: {{accent}}">
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{selIsPhoto}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; color: #5d584f">Photo</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{photoSwap}}" as="ps">
+<button type="button" onClick="{{ps.pick}}" aria-pressed="{{ps.pressed}}" aria-label="{{ps.label}}" style="width: 52px; height: 52px; padding: 2px; border: 2px solid {{ps.bd}}; border-radius: 8px; background: #ffffff; cursor: pointer">
+<img src="{{ps.url}}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 5px">
+</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; color: #5d584f">Finish</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{finishPills}}" as="fn">
+<button type="button" onClick="{{fn.pick}}" aria-pressed="{{fn.pressed}}" style="height: 40px; border: 1px solid {{fn.bd}}; border-radius: 8px; background: {{fn.bg}}; color: #1e1c19; font-size: 13px; cursor: pointer">{{fn.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; color: #5d584f">Frame</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{framePills}}" as="fr">
+<button type="button" onClick="{{fr.pick}}" aria-pressed="{{fr.pressed}}" style="height: 40px; border: 1px solid {{fr.bd}}; border-radius: 8px; background: {{fr.bg}}; color: #1e1c19; font-size: 13px; cursor: pointer">{{fr.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; font-size: 12px"><span style="color: #5d584f">Photo width</span><span style="font-weight: 600; font-variant-numeric: tabular-nums">{{selPwLabel}}</span></div>
+<input type="range" min="3" max="16" step="0.1" value="{{selPw}}" onChange="{{onPw}}" aria-label="Photo width in inches" style="width: 100%; height: 28px; margin: 0; accent-color: {{accent}}">
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{selIsBorder}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; color: #5d584f">Border style</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{borderPills}}" as="bp" hint-placeholder-count="4">
+<button type="button" onClick="{{bp.pick}}" aria-pressed="{{bp.pressed}}" style="height: 40px; border: 1px solid {{bp.bd}}; border-radius: 8px; background: {{bp.bg}}; color: #1e1c19; font-size: 13px; cursor: pointer">{{bp.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; font-size: 12px"><span style="color: #5d584f">Inset from edge</span><span style="font-weight: 600; font-variant-numeric: tabular-nums">{{selInsetLabel}}</span></div>
+<input type="range" min="0.4" max="3" step="0.05" value="{{selInset}}" onChange="{{onInset}}" aria-label="Border inset in inches" style="width: 100%; height: 28px; margin: 0; accent-color: {{accent}}">
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{selShowCarve}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; color: #5d584f">Carving method</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{carvePills}}" as="cp" hint-placeholder-count="5">
+<button type="button" onClick="{{cp.pick}}" aria-pressed="{{cp.pressed}}" title="{{cp.spec}}" style="height: 40px; padding: 0 12px; display: flex; align-items: center; gap: 6px; border: 1px solid {{cp.bd}}; border-radius: 8px; background: {{cp.bg}}; color: #1e1c19; font-size: 13px; cursor: pointer">
+<span style="width: 10px; height: 10px; border-radius: 50%; background: {{cp.dot}}; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3)"></span>
+<span>{{cp.label}}</span>
+</button>
+</sc-for>
+</div>
+<div style="display: {{edPaintDisp}}; flex-wrap: wrap; align-items: center; gap: 6px; padding-top: 4px">
+<span style="width: 100%; font-size: 12px; color: #4a463f">Or paint it</span>
+<sc-for list="{{edPaints}}" as="zep" hint-placeholder-count="9">
+<button type="button" onClick="{{zep.pick}}" aria-pressed="{{zep.pressed}}" aria-label="{{zep.label}} paint" title="{{zep.label}}" style="width: 30px; height: 30px; padding: 0; border-radius: 50%; border: 2px solid {{zep.ring}}; background: {{zep.col}}; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25); cursor: pointer"></button>
+</sc-for>
+<label title="Any color" style="position: relative; width: 30px; height: 30px; border-radius: 50%; border: 2px solid #d3cdc1; background: conic-gradient(#e0474c, #e8b53a, #6cc070, #3aa6c9, #6b5bd6, #d04fa8, #e0474c); cursor: pointer; overflow: hidden"><input type="color" value="{{edPaintNow}}" onInput="{{edPaintCustom}}" aria-label="Pick any paint color" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer"></label>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{selMovable}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; font-size: 12px"><span style="color: #5d584f">Center point</span><span style="font-weight: 600; font-variant-numeric: tabular-nums">{{selPosLabel}}</span></div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px">
+<button type="button" onClick="{{nudgeL}}" aria-label="Move left a quarter inch" style="height: 40px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; font-size: 16px; color: #1e1c19; cursor: pointer">←</button>
+<button type="button" onClick="{{nudgeU}}" aria-label="Move up a quarter inch" style="height: 40px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; font-size: 16px; color: #1e1c19; cursor: pointer">↑</button>
+<button type="button" onClick="{{nudgeD}}" aria-label="Move down a quarter inch" style="height: 40px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; font-size: 16px; color: #1e1c19; cursor: pointer">↓</button>
+<button type="button" onClick="{{nudgeR}}" aria-label="Move right a quarter inch" style="height: 40px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; font-size: 16px; color: #1e1c19; cursor: pointer">→</button>
+<button type="button" onClick="{{centerH}}" aria-label="Center horizontally on the stone" style="height: 40px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; font-size: 12px; color: #1e1c19; cursor: pointer">Center</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{selHasIssue}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 10px 12px; border-radius: 8px; background: #fbf1df; border: 1px solid #e6c68d">
+<sc-for list="{{selIssues}}" as="si">
+<span style="font-size: 12px; line-height: 1.45; color: #5e4012">{{si.text}}</span>
+</sc-for>
+<button type="button" onClick="{{fitSel}}" style="align-self: flex-start; height: 36px; padding: 0 12px; border: 1px solid #c99a4a; border-radius: 8px; background: #ffffff; color: #5e4012; font-size: 12px; font-weight: 600; cursor: pointer">Fit inside the margins</button>
+</div>
+</sc-if>
+
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
+<button type="button" onClick="{{forward}}" style="height: 40px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; font-size: 12px; color: #1e1c19; cursor: pointer">Forward</button>
+<button type="button" onClick="{{backward}}" style="height: 40px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; font-size: 12px; color: #1e1c19; cursor: pointer">Back</button>
+<button type="button" onClick="{{duplicate}}" style="height: 40px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; font-size: 12px; color: #1e1c19; cursor: pointer">Duplicate</button>
+<button type="button" onClick="{{remove}}" style="height: 40px; border: 1px solid #e3c1bb; border-radius: 8px; background: #ffffff; font-size: 12px; color: #9a2f22; cursor: pointer">Delete</button>
+</div>
+</section>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{isTabMeasure}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{statTiles}}" as="stt" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border: 1px solid #dcd7cc; border-radius: 10px; background: #ffffff">
+<span style="font-size: 11px; color: #5d584f">{{stt.k}}</span>
+<span style="font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums">{{stt.v}}</span>
+</div>
+</sc-for>
+</div>
+<section style="display: flex; flex-direction: column">
+<h2 style="margin: 0 0 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5d584f">Sections, top to bottom</h2>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 48px 48px 48px 48px; gap: 6px; padding: 0 8px 6px; font-size: 11px; color: #5d584f; border-bottom: 1px solid #dcd7cc">
+<span>Section</span><span>Top</span><span>Height</span><span>Width</span><span>Space</span>
+</div>
+<sc-for list="{{measureRows}}" as="mr" hint-placeholder-count="6">
+<button type="button" onClick="{{mr.select}}" style="width: 100%; min-height: 40px; display: grid; grid-template-columns: minmax(0, 1fr) 48px 48px 48px 48px; gap: 6px; align-items: center; padding: 0 8px; border: 0; border-bottom: 1px solid #ebe7de; background: {{mr.bg}}; color: #1e1c19; font-size: 12px; font-variant-numeric: tabular-nums; text-align: left; cursor: pointer">
+<span style="font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{mr.name}}</span>
+<span>{{mr.top}}</span>
+<span>{{mr.h}}</span>
+<span>{{mr.w}}</span>
+<span>{{mr.gap}}</span>
+</button>
+</sc-for>
+</section>
+<button type="button" onClick="{{reflow}}" style="height: 40px; border: 1px solid #cfc9bd; border-radius: 8px; background: #ffffff; color: #1e1c19; font-size: 13px; font-weight: 500; cursor: pointer">Even out vertical spacing</button>
+<p style="margin: 0; font-size: 12px; line-height: 1.5; color: #5d584f">Top is measured from the top of the die to the top of each section. Space is the clear gap above it. Letter heights are capital heights; lettering widths are estimated from the typeface until the carver sets final type.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{isTabHandoff}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<section style="display: flex; flex-direction: column">
+<h2 style="margin: 0 0 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5d584f">Stone specification</h2>
+<sc-for list="{{specRows}}" as="sr" hint-placeholder-count="7">
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid #ebe7de; font-size: 13px">
+<span style="color: #5d584f; flex-shrink: 0">{{sr.k}}</span>
+<span style="text-align: right">{{sr.v}}</span>
+</div>
+</sc-for>
+</section>
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5d584f">Carving schedule</h2>
+<sc-for list="{{schedule}}" as="row" hint-placeholder-count="5">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; border: 1px solid #dcd7cc; border-radius: 10px; background: #ffffff">
+<div style="display: flex; align-items: center; gap: 8px">
+<span style="width: 22px; height: 22px; flex-shrink: 0; border-radius: 50%; background: #f0b54a; color: #1e1c19; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center">{{row.num}}</span>
+<span style="font-size: 13px; font-weight: 600">{{row.title}}</span>
+</div>
+<div style="font-family: {{row.family}}; font-style: {{row.fstyle}}; font-size: 16px; line-height: 1.3; white-space: pre-line">{{row.content}}</div>
+<sc-for list="{{row.lines}}" as="ln">
+<div style="display: flex; gap: 8px; font-size: 12px; line-height: 1.4"><span style="width: 80px; flex-shrink: 0; color: #5d584f">{{ln.k}}</span><span>{{ln.v}}</span></div>
+</sc-for>
+</div>
+</sc-for>
+</section>
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5d584f">Vector file</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<button type="button" onClick="{{copySvg}}" style="height: 44px; border: 1px solid {{accent}}; border-radius: 8px; background: {{accent}}; color: #ffffff; font-size: 13px; font-weight: 600; cursor: pointer">Copy SVG</button>
+<button type="button" onClick="{{downloadSvg}}" style="height: 44px; border: 1px solid #cfc9bd; border-radius: 8px; background: #ffffff; color: #1e1c19; font-size: 13px; font-weight: 600; cursor: pointer">Download .svg</button>
+</div>
+<span aria-live="polite" style="min-height: 16px; font-size: 12px; color: #3d3a34">{{status}}</span>
+<textarea value="{{svgCode}}" onChange="{{noop}}" readonly="{{yes}}" spellcheck="false" aria-label="SVG code for the carver" style="height: 200px; box-sizing: border-box; padding: 10px; resize: vertical; border: 1px solid #cfc9bd; border-radius: 8px; background: #ffffff; color: #1e1c19; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; line-height: 1.5; white-space: pre"></textarea>
+<p style="margin: 0; font-size: 12px; line-height: 1.5; color: #5d584f">A 1:1 file in inches with one group per layer, tagged with its number, method, typeface and size. Photos are embedded. Ask the carver to convert text to outlines before cutting the stencil.</p>
+</section>
+</div>
+</sc-if>
+</div>
+</aside>

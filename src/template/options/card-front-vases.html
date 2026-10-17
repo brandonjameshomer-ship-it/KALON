@@ -1,0 +1,11 @@
+<svg viewBox="{{o.vb}}" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none">
+<sc-for list="{{o.vasesFront}}" as="zvf" hint-placeholder-count="0">
+<g transform="{{zvf.tf}}">
+<ellipse cx="0" cy="{{zvf.shCy}}" rx="{{zvf.shRx}}" ry="{{zvf.shRy}}" style="fill: #000000; opacity: 0.4; filter: url(#{{o.fShBlur2}})"></ellipse>
+<path d="{{zvf.d}}" style="fill: {{zvf.fill}}; stroke: {{zvf.stroke}}; stroke-width: 0.9"></path>
+<path d="{{zvf.d}}" style="display: {{zvf.grainDisp}}; fill: #ffffff; opacity: 0.3; filter: url(#{{o.fGrain}})"></path>
+<path d="{{zvf.ringD}}" style="fill: none; stroke: {{zvf.ringCol}}; stroke-width: 0.9; opacity: 0.45"></path>
+<ellipse cx="0" cy="{{zvf.rimCy}}" rx="{{zvf.rimRx}}" ry="{{zvf.rimRy}}" style="fill: {{zvf.rimFill}}"></ellipse>
+</g>
+</sc-for>
+</svg>

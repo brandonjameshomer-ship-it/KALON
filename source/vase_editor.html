@@ -1,0 +1,35 @@
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{vaseKindChips}}" as="zevk" hint-placeholder-count="2">
+<button type="button" onClick="{{zevk.pick}}" aria-pressed="{{zevk.pressed}}" style="min-height: 36px; padding: 4px 8px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid {{zevk.bd}}; border-radius: 10px; background: {{zevk.bg}}; color: #1e1c19; font-size: 12px; line-height: 1.2; cursor: pointer"><svg viewBox="-8 -19 16 20" width="14" height="18" aria-hidden="true" style="flex: none"><path d="{{zevk.icon}}" style="fill: {{zevk.fill}}"></path></svg><span>{{zevk.label}}</span></button>
+</sc-for>
+</div>
+<div style="display: {{vaseOnDisp}}; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; color: #3d3a34">{{vaseSideTitle}}</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{vaseSideChips}}" as="zevs" hint-placeholder-count="2">
+<button type="button" onClick="{{zevs.pick}}" aria-pressed="{{zevs.pressed}}" style="height: 36px; border: 1px solid {{zevs.bd}}; border-radius: 10px; background: {{zevs.bg}}; color: #1e1c19; font-size: 12px; cursor: pointer">{{zevs.label}}</button>
+</sc-for>
+</div>
+<div style="display: {{vaseLyDisp}}; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 600; color: #3d3a34">Side vases at the</span>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{vaseLyChips}}" as="zevl" hint-placeholder-count="3">
+<button type="button" onClick="{{zevl.pick}}" aria-pressed="{{zevl.pressed}}" style="height: 36px; border: 1px solid {{zevl.bd}}; border-radius: 10px; background: {{zevl.bg}}; color: #1e1c19; font-size: 12px; cursor: pointer">{{zevl.label}}</button>
+</sc-for>
+</div>
+</div>
+<div role="group" aria-label="Side vase height" style="display: {{vaseRiseDisp}}; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 8px; border: 1px solid #d8d1c4; border-radius: 8px; background: #ffffff">
+<span style="display: flex; flex-direction: column; gap: 1px"><span style="font-size: 12px; color: #4a463f">Side vase height</span><span style="font-size: 13px; font-weight: 600; color: #1e1c19">{{vaseRiseLabel}}</span></span>
+<span style="display: flex; gap: 6px; flex: none"><button type="button" onClick="{{vaseUp}}" aria-label="Move the side vases up" style="width: 36px; height: 36px; border: 0; border-radius: 8px; background: #f1ede5; font-size: 20px; color: #1e1c19; cursor: pointer">↑</button><button type="button" onClick="{{vaseDown}}" aria-label="Move the side vases down" style="width: 36px; height: 36px; border: 0; border-radius: 8px; background: #f1ede5; font-size: 20px; color: #1e1c19; cursor: pointer">↓</button></span>
+</div>
+<span style="font-size: 12px; font-weight: 600; color: #3d3a34">{{vaseFrontTitle}}</span>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{vaseFrontChips}}" as="zevf" hint-placeholder-count="3">
+<button type="button" onClick="{{zevf.pick}}" aria-pressed="{{zevf.pressed}}" style="height: 36px; border: 1px solid {{zevf.bd}}; border-radius: 10px; background: {{zevf.bg}}; color: #1e1c19; font-size: 12px; cursor: pointer">{{zevf.label}}</button>
+</sc-for>
+</div>
+<div role="group" aria-label="Vase size" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 8px; border: 1px solid #d8d1c4; border-radius: 8px; background: #ffffff">
+<span style="display: flex; flex-direction: column; gap: 1px"><span style="font-size: 13px; color: #4a463f">Vase size</span><span style="font-size: 15px; font-weight: 600; color: #1e1c19">{{vaseSizeLabel}}</span></span>
+<span style="display: flex; gap: 6px; flex: none"><button type="button" onClick="{{vaseSmaller}}" aria-label="Smaller vases" style="width: 36px; height: 36px; border: 0; border-radius: 8px; background: #f1ede5; font-size: 20px; color: #1e1c19; cursor: pointer">−</button><button type="button" onClick="{{vaseLarger}}" aria-label="Larger vases" style="width: 36px; height: 36px; border: 0; border-radius: 8px; background: #f1ede5; font-size: 20px; color: #1e1c19; cursor: pointer">+</button></span>
+</div>
+</div>

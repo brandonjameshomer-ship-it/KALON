@@ -1,0 +1,11 @@
+<sc-if value="{{wIs_story}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<!--@story-field {"label": "{{story1Label}}", "value": "fStory", "on_change": "onStory", "placeholder": "What did they love? Who did they love? Where were they happiest?"}-->
+<div style="display: {{twoDisp}}; flex-direction: column; gap: 8px">
+<!--@story-field {"label": "{{story2Label}}", "value": "fStory2", "on_change": "onStory2", "placeholder": "{{story2Ph}}"}-->
+</div>
+<p style="display: {{twoDisp}}; margin: 0; font-size: 15px; line-height: 1.5; color: #4a463f">Memories they shared can go in either. We’ll give each of them their own side, or blend their stories together.</p>
+<span style="align-self: flex-end; font-size: 15px; color: #4a463f">{{storyCount}}</span>
+</div>
+</sc-if>
+

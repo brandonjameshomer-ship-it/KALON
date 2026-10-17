@@ -1,0 +1,5 @@
+<div role="group" aria-label="Which stone of the pair" style="display: {{pairToggleDisp}}; position: absolute; left: 50%; top: 76px; z-index: 12; transform: translateX(-50%); padding: 4px; gap: 4px; border-radius: 22px; background: rgba(251, 250, 247, 0.92); box-shadow: 0 2px 10px rgba(30, 24, 16, 0.14)">
+<sc-for list="{{pairChips2}}" as="zpc" hint-placeholder-count="2">
+<button type="button" onClick="{{zpc.pick}}" aria-pressed="{{zpc.pressed}}" style="height: 36px; padding: 0 16px; border: 0; border-radius: 18px; background: {{zpc.bg}}; color: {{zpc.fg}}; font-size: 14px; font-weight: 600; cursor: pointer">{{zpc.label}}</button>
+</sc-for>
+</div>

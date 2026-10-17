@@ -1,0 +1,13 @@
+<div style="padding: 16px 22px 12px; border-bottom: 1px solid #dcd7cc; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4a463f">Guided changes</span>
+<span style="font-size: 14px; color: #3d3a34">{{gCountLabel}}</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px">
+<sc-for list="{{gsteps}}" as="gs" hint-placeholder-count="7">
+<button type="button" onClick="{{gs.pick}}" aria-current="{{gs.current}}" aria-label="{{gs.aria}}" title="{{gs.label}}" style="height: 28px; padding: 0; border: 0; background: transparent; cursor: pointer; display: flex; flex-direction: column; justify-content: center">
+<span style="display: block; height: 6px; border-radius: 3px; background: {{gs.bar}}"></span>
+</button>
+</sc-for>
+</div>
+</div>

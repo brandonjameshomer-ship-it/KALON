@@ -1,0 +1,65 @@
+<defs>
+<filter id="{{o.fGrain}}" x="0" y="0" width="1" height="1">
+<feTurbulence type="fractalNoise" baseFrequency="0.32" numOctaves="2" seed="7" result="noise"></feTurbulence>
+<feColorMatrix in="noise" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.9 0 0 0 -0.42" result="specks"></feColorMatrix>
+<feComposite in="specks" in2="SourceGraphic" operator="in"></feComposite>
+</filter>
+<linearGradient id="{{o.gSheen}}" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" style="stop-color: #ffffff; stop-opacity: 0.12"></stop>
+<stop offset="0.55" style="stop-color: #ffffff; stop-opacity: 0"></stop>
+</linearGradient>
+<linearGradient id="{{o.gBase}}" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" style="stop-color: {{o.bFace}}"></stop>
+<stop offset="1" style="stop-color: {{o.bEdge}}"></stop>
+</linearGradient>
+<radialGradient id="{{o.gShadow}}" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0" style="stop-color: #3c3226; stop-opacity: 0.34"></stop>
+<stop offset="1" style="stop-color: #3c3226; stop-opacity: 0"></stop>
+</radialGradient>
+<filter id="{{o.fVcut}}" x="-20%" y="-30%" width="140%" height="160%">
+<feDropShadow dx="0" dy="-0.9" stdDeviation="0.45" style="flood-color: #000000; flood-opacity: 0.8"></feDropShadow>
+<feDropShadow dx="0" dy="0.8" stdDeviation="0.1" style="flood-color: #ffffff; flood-opacity: 0.16"></feDropShadow>
+</filter>
+<filter id="{{o.fRelief}}" x="-20%" y="-30%" width="140%" height="160%">
+<feDropShadow dx="1.3" dy="2" stdDeviation="1.1" style="flood-color: #000000; flood-opacity: 0.6"></feDropShadow>
+<feDropShadow dx="-0.6" dy="-0.6" stdDeviation="0.3" style="flood-color: #ffffff; flood-opacity: 0.14"></feDropShadow>
+</filter>
+<filter id="{{o.fGold}}" x="-20%" y="-30%" width="140%" height="160%">
+<feDropShadow dx="0" dy="-0.8" stdDeviation="0.4" style="flood-color: #000000; flood-opacity: 0.7"></feDropShadow>
+<feDropShadow dx="0" dy="0.6" stdDeviation="0.1" style="flood-color: #ffe8a0; flood-opacity: 0.35"></feDropShadow>
+</filter>
+<filter id="{{o.fFlat}}"><feOffset dx="0" dy="0"></feOffset></filter>
+<filter id="{{o.fLaser}}" style="color-interpolation-filters: sRGB">
+<feColorMatrix type="saturate" values="0"></feColorMatrix>
+<feComponentTransfer>
+<feFuncR type="linear" slope="1.25" intercept="-0.08"></feFuncR>
+<feFuncG type="linear" slope="1.25" intercept="-0.08"></feFuncG>
+<feFuncB type="linear" slope="1.25" intercept="-0.08"></feFuncB>
+</feComponentTransfer>
+</filter>
+<linearGradient id="{{o.gWarm}}" x1="1" y1="0" x2="0.2" y2="1">
+<stop offset="0" style="stop-color: #ffe2aa; stop-opacity: 0.55"></stop>
+<stop offset="0.6" style="stop-color: #ffe2aa; stop-opacity: 0.08"></stop>
+<stop offset="1" style="stop-color: #6b5a3a; stop-opacity: 0.18"></stop>
+</linearGradient>
+<radialGradient id="{{o.gPillow}}" cx="0.5" cy="0.42" r="0.62">
+<stop offset="0" style="stop-color: #ffffff; stop-opacity: 0.12"></stop>
+<stop offset="0.7" style="stop-color: #ffffff; stop-opacity: 0"></stop>
+<stop offset="1" style="stop-color: #000000; stop-opacity: 0.32"></stop>
+</radialGradient>
+<linearGradient id="{{o.gVaseA}}" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" style="stop-color: #6f737a"></stop>
+<stop offset="0.16" style="stop-color: #b9bcc2"></stop>
+<stop offset="0.33" style="stop-color: #f2f3f5"></stop>
+<stop offset="0.5" style="stop-color: #a3a7ad"></stop>
+<stop offset="0.7" style="stop-color: #858990"></stop>
+<stop offset="0.85" style="stop-color: #d9dbdf"></stop>
+<stop offset="1" style="stop-color: #666a70"></stop>
+</linearGradient>
+<linearGradient id="{{o.gVaseG}}" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" style="stop-color: {{o.vgE}}"></stop>
+<stop offset="0.3" style="stop-color: {{o.vgL}}"></stop>
+<stop offset="0.55" style="stop-color: {{o.vgF}}"></stop>
+<stop offset="1" style="stop-color: {{o.vgE}}"></stop>
+</linearGradient>
+</defs>

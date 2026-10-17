@@ -1,0 +1,17 @@
+<span style="font-size: 12px; color: #5d584f">Typeface theme</span>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{fontCards}}" as="zefo" hint-placeholder-count="5">
+<button type="button" onClick="{{zefo.pick}}" aria-pressed="{{zefo.pressed}}" title="{{zefo.desc}}" style="padding: 6px 10px; display: flex; align-items: baseline; justify-content: space-between; gap: 8px; border: 1px solid {{zefo.bd}}; border-radius: 8px; background: {{zefo.bg}}; color: #1e1c19; text-align: left; cursor: pointer">
+<span style="font-family: {{zefo.f1}}; font-style: {{zefo.s1}}; font-size: 16px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{zefo.label}}</span>
+<span style="font-family: {{zefo.f2}}; font-style: {{zefo.s2}}; font-size: 15px; color: #4a463f; flex: none">Aa</span>
+</button>
+</sc-for>
+</div>
+<!--@stepper {"label": "All lettering size", "value": "textSizeLabel", "minus": "textMinus", "minus_label": "Smaller lettering", "plus": "textPlus", "plus_label": "Larger lettering", "size": "compact"}-->
+<!--@stepper {"label": "Space between lines", "value": "spacingLabel", "minus": "spaceMinus", "minus_label": "Closer spacing", "plus": "spacePlus", "plus_label": "More spacing", "size": "compact"}-->
+<button type="button" onClick="{{fitLettering}}" style="height: 38px; padding: 0 12px; border: 1px solid {{accent}}; border-radius: 8px; background: #ffffff; color: {{accent}}; font-size: 13px; font-weight: 600; cursor: pointer">Best lettering fit for this stone</button>
+<!--@size-message {"size": "compact"}-->
+<div role="group" aria-label="Position on the stone" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 8px; border: 1px solid #d8d1c4; border-radius: 10px; background: #ffffff">
+<div style="display: flex; flex-direction: column; gap: 1px; min-width: 0"><span style="font-size: 12px; color: #5d584f">Position on the stone</span><span style="font-size: 14px; font-weight: 600; color: #1e1c19">{{vposLabel}}</span></div>
+<div style="display: flex; gap: 6px; flex: none"><!--@step-button {"action": "vposUp", "label": "Move all lettering up", "glyph": "↑", "size": "compact"}--><!--@step-button {"action": "vposDown", "label": "Move all lettering down", "glyph": "↓", "size": "compact"}--></div>
+</div>

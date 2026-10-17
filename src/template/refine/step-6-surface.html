@@ -1,0 +1,49 @@
+<sc-if value="{{gIs6}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: {{reverseDisp}}; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 10px; background: #f4efe4; border: 1px solid #e0d6c2">
+<span style="font-size: 14px; line-height: 1.45; color: #3d3a34">{{reverseText}}</span>
+<button type="button" onClick="{{useReverse}}" aria-pressed="{{reversePressed}}" style="flex: none; height: 40px; padding: 0 14px; border: 2px solid {{accent}}; border-radius: 10px; background: #ffffff; color: {{accent}}; font-size: 14px; font-weight: 600; cursor: pointer">{{reverseBtn}}</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<!--@heading {"text": "Stone surface", "size": "large"}-->
+<!--@swatch-cards {"list": "surfaceCards", "item": "zsu", "size": "large", "count": 3, "swatch_height": 44}-->
+<p style="margin: 0; font-size: 14px; line-height: 1.45; color: #3d3a34">{{surfaceNote}}</p>
+
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<!--@heading {"text": "Edges", "size": "large"}-->
+<!--@choice-chips {"list": "edgeChips", "item": "zed", "size": "large", "count": 2}-->
+</div>
+<div style="display: {{baseOnDisp}}; flex-direction: column; gap: 8px">
+<!--@heading {"text": "Base finish", "size": "large"}-->
+<!--@swatch-cards {"list": "baseSurfCards", "item": "zbs", "size": "large", "count": 3, "swatch_height": 30}-->
+<!--@choice-chips {"list": "baseEdgeChips", "item": "zbe", "size": "large", "count": 2}-->
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<!--@heading {"text": "Finish for each part", "size": "large"}-->
+<p style="margin: 0; font-size: 14px; line-height: 1.45; color: #3d3a34">Change the name and everything else follows, symbols and border included. Set any part on its own to make it different.</p>
+<sc-for list="{{finishRows}}" as="zfr" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 7px; padding-bottom: 12px; border-bottom: 1px solid #ece7dd">
+<div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap"><span style="font-size: 16px; font-weight: 600; color: #1e1c19">{{zfr.label}}</span><span style="display: {{zfr.followDisp}}; font-size: 13px; color: #5d584f">{{zfr.followText}}</span><!--@text-link {"action": "zfr.match", "display": "zfr.matchDisp", "label": "Match the name", "font_size": 13}--></div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{zfr.chips}}" as="zfc" hint-placeholder-count="7">
+<button type="button" onClick="{{zfc.pick}}" aria-pressed="{{zfc.pressed}}" title="{{zfc.spec}}" style="height: 40px; padding: 0 11px; display: flex; align-items: center; gap: 7px; border: 2px solid {{zfc.bd}}; border-radius: 10px; background: {{zfc.bg}}; color: #1e1c19; font-size: 14px; cursor: pointer">
+<span style="width: 12px; height: 12px; border-radius: 50%; background: {{zfc.dot}}; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3)"></span>
+<span>{{zfc.label}}</span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{zfr.isPaint}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding-top: 2px">
+<span style="font-size: 13px; color: #4a463f">Or paint it</span>
+<sc-for list="{{zfr.paints}}" as="zfs" hint-placeholder-count="3">
+<button type="button" onClick="{{zfs.pick}}" aria-pressed="{{zfs.pressed}}" aria-label="{{zfs.label}} paint" title="{{zfs.label}}" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; border: 3px solid {{zfs.ring}}; background: {{zfs.col}}; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25); cursor: pointer"></button>
+</sc-for>
+<label title="Any color" style="position: relative; width: 32px; height: 32px; border-radius: 50%; border: 3px solid {{zfr.customRing}}; background: conic-gradient(#e0474c, #e8b53a, #6cc070, #3aa6c9, #6b5bd6, #d04fa8, #e0474c); cursor: pointer; overflow: hidden"><input type="color" value="{{zfr.customNow}}" onInput="{{zfr.onCustom}}" aria-label="Pick any paint color for {{zfr.label}}" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer"></label>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>

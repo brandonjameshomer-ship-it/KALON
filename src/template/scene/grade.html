@@ -1,0 +1,21 @@
+<svg viewBox="0 0 1440 836" width="1440" height="836" style="position: absolute; left: 0; top: 0; display: block">
+<defs>
+<radialGradient id="lpMoon2" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0" style="stop-color: #e4ebff; stop-opacity: 0.6"></stop>
+<stop offset="0.3" style="stop-color: #b9c8f5; stop-opacity: 0.2"></stop>
+<stop offset="1" style="stop-color: #b9c8f5; stop-opacity: 0"></stop>
+</radialGradient>
+<radialGradient id="lpVignette" cx="0.55" cy="0.5" r="0.78">
+<stop offset="0.5" style="stop-color: {{scn.vigC}}; stop-opacity: 0"></stop>
+<stop offset="1" style="stop-color: {{scn.vigC}}; stop-opacity: {{scn.vigOp}}"></stop>
+</radialGradient>
+</defs>
+<rect x="0" y="0" width="1440" height="836" style="fill: {{scn.c.tint}}; opacity: {{scn.c.tintOp}}"></rect>
+<rect x="0" y="0" width="1440" height="836" style="fill: url(#lpVignette)"></rect>
+<g style="display: {{scn.nightDisp}}">
+<circle cx="{{scn.sunX}}" cy="{{scn.sunY}}" r="230" style="fill: url(#lpMoon2)"></circle>
+<circle cx="{{scn.sunX}}" cy="{{scn.sunY}}" r="36" style="fill: #f4f0e2; opacity: 0.2"></circle>
+<circle cx="{{scn.sunX}}" cy="{{scn.sunY}}" r="28" style="fill: #faf7ec"></circle>
+<path d="{{scn.craterD}}" style="fill: #dcd6c4; opacity: 0.5"></path>
+</g>
+</svg>

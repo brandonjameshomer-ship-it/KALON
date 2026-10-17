@@ -1,0 +1,22 @@
+<div style="display: flex; gap: 28px; align-items: flex-end">
+<sc-for list="{{ghosts}}" as="g" hint-placeholder-count="3">
+<svg viewBox="0 0 150 112" width="150" height="112" aria-hidden="true" style="position: relative; animation: hsPulse 2.2s ease-in-out {{g.delay}} infinite"><path d="{{g.d}}" transform="translate(15 0)" style="fill: #d8c7ae"></path><rect x="0" y="92" width="150" height="18" rx="2" style="fill: #cbb89c"></rect></svg>
+</sc-for>
+</div>
+<div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center">
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 42px; font-weight: 600">Creating something beautiful for {{buildName}}</h1>
+<p style="margin: 0; font-size: 18px; color: #3d3a34">Gathering everything you shared into three designs. This only takes a moment.</p>
+</div>
+<ol aria-live="polite" style="position: relative; list-style: none; margin: 0; padding: 0; width: 600px; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{buildSteps}}" as="b" hint-placeholder-count="4">
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 14px 18px; background: rgba(255, 250, 243, 0.9); border: 1px solid #ecdfcc; border-radius: 14px; opacity: {{b.op}}; transition: opacity .3s ease">
+<span style="width: 24px; height: 24px; flex-shrink: 0; box-sizing: border-box; border-radius: 50%; border: 2px solid {{b.ring}}; border-top-color: {{b.ringTop}}; background: {{b.fill}}; animation: {{b.anim}}; display: flex; align-items: center; justify-content: center">
+<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" style="display: {{b.checkDisp}}"><path d="M5 12.5 L10 17 L19 7" style="fill: none; stroke: #ffffff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 16px; font-weight: 600">{{b.label}}</span>
+<span style="font-size: 15px; line-height: 1.45; color: #3d3a34">{{b.detail}}</span>
+</span>
+</li>
+</sc-for>
+</ol>

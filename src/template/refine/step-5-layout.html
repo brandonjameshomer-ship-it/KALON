@@ -1,0 +1,127 @@
+<sc-if value="{{gIs5}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<div class="hs-tip" role="note" style="display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px; border: 2px solid {{accent}}; border-radius: 12px; background: #ffffff; color: {{accent}}">
+<div aria-hidden="true" style="flex: none; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: {{soft}}">
+<svg viewBox="0 0 40 40" width="34" height="34" style="overflow: visible">
+<path d="M6 34 V14 Q6 5 17 5 Q28 5 28 14 V34 Z" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round"></path>
+<g class="hs-tip-a"><rect x="10" y="13" width="14" height="3.2" rx="1.6" style="fill: currentColor"></rect></g>
+<g class="hs-tip-b"><rect x="11.5" y="23" width="11" height="3.2" rx="1.6" style="fill: currentColor; opacity: 0.55"></rect></g>
+<path d="M35 9 V31 M31.5 12.5 L35 9 L38.5 12.5 M31.5 27.5 L35 31 L38.5 27.5" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"></path>
+</svg>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
+<span style="font-size: 16px; font-weight: 600; color: {{accent}}">You can rearrange the stone</span>
+<span style="font-size: 14px; line-height: 1.45; color: #3d3a34">Drag any line, symbol or photo on the stone and drop it onto another part to swap their places. Outlines show where each part can go. Sizes stay as they are.</span>
+<button type="button" onClick="{{resetOrder}}" style="display: {{orderResetDisp}}; align-self: flex-start; margin-top: 2px; padding: 0; border: 0; background: transparent; color: {{accent}}; font-size: 14px; font-weight: 600; text-decoration: underline; cursor: pointer">Reset order</button>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<!--@heading {"text": "Symmetrical", "size": "large"}-->
+<!--@layout-cards {"list": "layoutSym", "item": "lc", "size": "large", "count": 3}-->
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px"><!--@heading {"text": "Asymmetrical", "size": "large"}--><button type="button" onClick="{{toggleFlip}}" aria-pressed="{{flipPressed}}" style="height: 36px; padding: 0 12px; display: flex; align-items: center; gap: 7px; border: 2px solid {{flipBd}}; border-radius: 10px; background: {{flipBg}}; color: #1e1c19; font-size: 14px; font-weight: 600; cursor: pointer"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3 V21 M9 7 L4 12 L9 17 Z M15 7 L20 12 L15 17 Z" style="fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round"></path></svg><span>{{flipLabel}}</span></button></div>
+<!--@layout-cards {"list": "layoutAsym", "item": "lc2", "size": "large", "count": 2}-->
+</div>
+<div style="display: {{flankDisp}}; flex-direction: column; gap: 8px">
+<!--@heading {"text": "Side symbols", "size": "large"}-->
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{flankChips}}" as="fk" hint-placeholder-count="3">
+<button type="button" onClick="{{fk.pick}}" aria-pressed="{{fk.pressed}}" style="min-height: 40px; padding: 8px 14px; border: 2px solid {{fk.bd}}; border-radius: 10px; background: {{fk.bg}}; color: #1e1c19; font-size: 14px; cursor: pointer">{{fk.label}}</button>
+</sc-for>
+<button type="button" onClick="{{flankSwapAct}}" style="display: {{flankSwapDisp}}; align-items: center; gap: 6px; min-height: 40px; padding: 8px 14px; border: 2px solid #d3cdc1; border-radius: 10px; background: #ffffff; color: #1e1c19; font-size: 14px; cursor: pointer"><span aria-hidden="true">⇄</span>Swap sides</button>
+</div>
+<span style="font-size: 13px; line-height: 1.4; color: #5d584f">You can also drag a side symbol across the stone to move it or trade places.</span>
+</div>
+<div style="display: {{splitDisp}}; flex-direction: column; gap: 10px; padding: 14px; border-radius: 12px; background: #f4efe4; border: 1px solid #e0d6c2">
+<!--@heading {"text": "A companion stone", "size": "large"}-->
+<div style="display: {{intakePtDisp}}; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-size: 14px; line-height: 1.45; color: #3d3a34">{{intakePtText}}</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{storyModeChips}}" as="zsm" hint-placeholder-count="2">
+<button type="button" onClick="{{zsm.pick}}" aria-pressed="{{zsm.pressed}}" style="padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; border: 2px solid {{zsm.bd}}; border-radius: 10px; background: {{zsm.bg}}; color: #1e1c19; text-align: left; cursor: pointer"><span style="font-size: 15px; font-weight: 600">{{zsm.label}}</span><span style="font-size: 13px; color: #3d3a34">{{zsm.desc}}</span></button>
+</sc-for>
+</div>
+</div>
+<div style="display: {{manualPtDisp}}; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-size: 14px; line-height: 1.45; color: #3d3a34">{{splitNote}}</p>
+<label style="display: flex; flex-direction: column; gap: 5px"><span style="font-size: 14px; font-weight: 600">Partner’s name</span><input type="text" value="{{ptName}}" onChange="{{onPtName}}" placeholder="Leave empty for one person" autocomplete="off" style="height: 48px; box-sizing: border-box; padding: 0 14px; border: 2px solid #b3ab9c; border-radius: 10px; background: #ffffff; font-size: 17px; color: #1e1c19; min-width: 0"></label>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<label style="display: flex; flex-direction: column; gap: 5px"><span style="font-size: 14px; font-weight: 600">Born</span><input type="text" value="{{ptBorn}}" onChange="{{onPtBorn}}" placeholder="1943 or May 2, 1943" autocomplete="off" style="height: 48px; box-sizing: border-box; padding: 0 14px; border: 2px solid #b3ab9c; border-radius: 10px; background: #ffffff; font-size: 17px; color: #1e1c19; min-width: 0"></label>
+<label style="display: flex; flex-direction: column; gap: 5px"><span style="font-size: 14px; font-weight: 600">Passed</span><input type="text" value="{{ptPassed}}" onChange="{{onPtPassed}}" placeholder="Leave empty if living" autocomplete="off" style="height: 48px; box-sizing: border-box; padding: 0 14px; border: 2px solid #b3ab9c; border-radius: 10px; background: #ffffff; font-size: 17px; color: #1e1c19; min-width: 0"></label>
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<!--@heading {"text": "Border", "size": "large"}-->
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{borderCards}}" as="bc" hint-placeholder-count="5">
+<button type="button" onClick="{{bc.pick}}" aria-pressed="{{bc.pressed}}" style="height: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border: 2px solid {{bc.bd}}; border-radius: 12px; background: {{bc.bg}}; color: #1e1c19; cursor: pointer">
+<svg viewBox="0 0 60 40" width="60" height="40" aria-hidden="true">
+<path d="M3 37 V5 Q3 3 5 3 H55 Q57 3 57 5 V37 Z" style="fill: {{bc.face}}"></path>
+<path d="M9 31 V9 H51 V31 Z" style="display: {{bc.d1}}; fill: none; stroke: {{bc.ink}}; stroke-width: {{bc.sw}}; stroke-dasharray: {{bc.dash}}; stroke-linecap: round"></path>
+<path d="M13 27 V13 H47 V27 Z" style="display: {{bc.d2}}; fill: none; stroke: {{bc.ink}}; stroke-width: {{bc.sw}}"></path>
+</svg>
+<span style="font-size: 14px">{{bc.label}}</span>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid #e4dfd5">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px"><!--@heading {"text": "Size and spacing", "size": "large"}--><!--@auto-fit-button {"action": "fitLettering", "icon": "M5 6 H15 M10 6 V18 M14 12 H20 M17 12 V18 M4 21 H20", "label": "Best lettering fit"}--></div>
+<!--@size-message {"size": "large"}-->
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<div role="group" aria-label="Lettering size" style="display: flex; flex-direction: column; gap: 6px; padding: 8px; border: 1px solid #d8d1c4; border-radius: 10px; background: #ffffff">
+<span style="font-size: 13px; color: #4a463f">Lettering size</span>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 6px">
+<!--@step-button {"action": "textMinus", "label": "Smaller lettering", "glyph": "−", "size": "large"}-->
+<span style="font-size: 15px; font-weight: 600; color: #1e1c19; white-space: nowrap">{{textSizeLabel}}</span>
+<!--@step-button {"action": "textPlus", "label": "Larger lettering", "glyph": "+", "size": "large"}-->
+</div>
+<!--@text-link {"action": "textAuto", "display": "textAutoDisp", "label": "Back to auto-fit", "font_size": 13, "align_start": true}-->
+</div>
+<div role="group" aria-label="Spacing" style="display: flex; flex-direction: column; gap: 6px; padding: 8px; border: 1px solid #d8d1c4; border-radius: 10px; background: #ffffff">
+<span style="font-size: 13px; color: #4a463f">Spacing between lines</span>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 6px">
+<!--@step-button {"action": "spaceMinus", "label": "Closer spacing", "glyph": "−", "size": "large"}-->
+<span style="font-size: 15px; font-weight: 600; color: #1e1c19">{{spacingLabel}}</span>
+<!--@step-button {"action": "spacePlus", "label": "More spacing", "glyph": "+", "size": "large"}-->
+</div>
+</div>
+</div>
+<div role="group" aria-label="Position on the stone" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px; border: 1px solid #d8d1c4; border-radius: 10px; background: #ffffff">
+<div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+<span style="font-size: 13px; color: #4a463f">Position on the stone</span>
+<span style="font-size: 15px; font-weight: 600; color: #1e1c19">{{vposLabel}}</span>
+<span style="font-size: 12px; color: #5d584f">{{vposHint}} <!--@text-link {"action": "vposReset", "display": "vposResetDisp", "label": "Reset", "font_size": 12}--></span>
+</div>
+<div style="display: flex; gap: 6px; flex: none">
+<!--@step-button {"action": "vposUp", "label": "Move the lettering up", "glyph": "↑", "size": "large"}-->
+<!--@step-button {"action": "vposDown", "label": "Move the lettering down", "glyph": "↓", "size": "large"}-->
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid #e4dfd5">
+<!--@stone-size-->
+<div style="display: {{fitOkDisp}}; align-items: center; gap: 8px; font-size: 14px; color: #23553f"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12.5 L10 17 L19 7" style="fill: none; stroke: #23553f; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round"></path></svg><span>Everything you chose fits at this size.</span></div>
+<div style="display: {{fitSugDisp}}; flex-direction: column; gap: 10px; padding: 12px 14px; border-radius: 10px; background: #eef4ef; border: 1px solid #b9d2c2">
+<span style="font-size: 14px; line-height: 1.45; color: #1f4634">{{fitSugText}}</span>
+<button type="button" onClick="{{useFitSug}}" style="align-self: flex-start; height: 42px; padding: 0 16px; border: 2px solid {{accent}}; border-radius: 10px; background: {{accent}}; color: #ffffff; font-size: 15px; font-weight: 600; cursor: pointer">{{fitSugBtn}}</button>
+</div>
+</div>
+<div style="padding-top: 14px; border-top: 1px solid #e4dfd5">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px 14px; border-radius: 10px; background: {{fitHeadBg}}; border: 1px solid {{fitHeadBd}}">
+<div style="display: flex; align-items: center; gap: 8px"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{fitHeadDot}}"></span><span style="font-size: 15px; font-weight: 600; color: {{fitHeadCol}}">{{fitHead}}</span></div>
+<p style="display: {{fitTipDisp}}; margin: 0; font-size: 13px; line-height: 1.45; color: #3d3a34">{{fitTip}}</p>
+<sc-for list="{{fitRows}}" as="zst" hint-placeholder-count="5">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 14px; line-height: 1.3">
+<span style="flex: none; width: 9px; height: 9px; border-radius: 50%; background: {{zst.dot}}"></span>
+<span style="flex: none; min-width: 96px; font-weight: 600; color: #1e1c19">{{zst.name}}</span>
+<span style="color: {{zst.fg}}; font-weight: {{zst.w}}">{{zst.text}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+

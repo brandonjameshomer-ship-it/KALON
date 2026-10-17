@@ -1,0 +1,18 @@
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 96px; box-sizing: border-box; padding: 0 48px; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; column-gap: 16px; background: transparent">
+<div style="display: flex; align-items: center; justify-content: flex-start">
+<button type="button" onClick="{{wBack}}" style="visibility: {{wBackVis}}; height: 58px; padding: 0 22px 0 16px; display: flex; align-items: center; gap: 8px; border: 2px solid #cfc9bd; border-radius: 12px; background: #ffffff; color: #1e1c19; font-size: 19px; font-weight: 500; cursor: pointer">
+<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5 L8 12 L15 19" style="fill: none; stroke: #3d3a34; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+<span>Back</span>
+</button>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+<span role="status" style="font-size: 15px; color: {{footColor}}; text-align: center; white-space: nowrap">{{footMsg}}</span>
+<button type="button" onClick="{{wSkip}}" style="display: {{wSkipDisp}}; height: 44px; padding: 0 16px; border: 0; border-radius: 12px; background: transparent; color: #3d3a34; font-size: 18px; font-weight: 500; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; white-space: nowrap">Skip for now</button>
+</div>
+<div style="display: flex; align-items: center; justify-content: flex-end; gap: 14px">
+<button type="button" class="{{wNextClass}}" onClick="{{wNext}}" style="position: relative; height: 58px; padding: 0 26px; display: flex; align-items: center; gap: 10px; border: 2px solid {{accent}}; border-radius: 12px; background: {{accent}}; color: #ffffff; font-size: 20px; font-weight: 600; cursor: pointer">
+<span>{{wNextLabel}}</span>
+<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="overflow: visible"><path class="hs-cr-ic" d="{{wNextIcon}}" style="fill: none; stroke: #ffffff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round"></path><path class="hs-cr-rays" d="{{wNextRays}}" style="fill: none; stroke: #ffffff; stroke-width: 1.8; stroke-linecap: round"></path></svg>
+</button>
+</div>
+</div>

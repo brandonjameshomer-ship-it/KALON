@@ -1,0 +1,39 @@
+<div style="position: absolute; left: 14px; top: 128px; width: 400px; z-index: 8; opacity: {{fcOp}}; transform: translate({{fcX}}px, 0); visibility: {{fcVis}}; transition: opacity 1s ease, transform 1s cubic-bezier(.22,.8,.2,1), visibility 0s linear {{fcVisDelay}}">
+<div aria-hidden="true" style="position: absolute; inset: 0; border-radius: 22px; background: rgba(255, 250, 243, 0.94); box-shadow: 0 12px 32px rgba(40, 34, 26, 0.14); opacity: {{panelOp}}; transition: opacity 1.4s ease"></div>
+<div onClick="{{finishTelling}}" style="position: relative; box-sizing: border-box; padding: 24px 26px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 8px; opacity: {{titleOp}}; transform: translateY({{titleY}}px); transition: opacity 1.8s ease, transform 1.8s cubic-bezier(.22,.8,.2,1)">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8a5a1c; opacity: {{restOp}}; transition: opacity 1.4s ease .25s">Lovingly finished</span>
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 36px; font-weight: 600; line-height: 1.04; color: {{inkTitle}}; transition: color 1.4s ease">A peaceful place for {{finName}}</h1>
+</div>
+<p style="margin: 0; font-family: 'EB Garamond', Georgia, serif; font-size: 19px; line-height: 1.55; color: {{inkStory}}; transition: color 1.4s ease">
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap">{{finWhy}}</span>
+<sc-if value="{{storyHidden}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="visibility: hidden; white-space: pre-line">{{finWhy}}</span></sc-if>
+<sc-if value="{{storyTyping}}" hint-placeholder-val="{{false}}"><span aria-hidden="true"><sc-for list="{{storyWords}}" as="qw" hint-placeholder-count="0"><span style="white-space: nowrap"><sc-for list="{{qw.chars}}" as="qch" hint-placeholder-count="0"><span style="opacity: 0; animation: hsInk 0.45s ease both; animation-delay: {{qch.d}}s">{{qch.c}}</span></sc-for></span><span>{{qw.sp}}</span><sc-if value="{{qw.br}}" hint-placeholder-val="{{false}}"><br></sc-if></sc-for></span></sc-if>
+<sc-if value="{{storyPlain}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="white-space: pre-line">{{finWhy}}</span></sc-if>
+</p>
+<div style="display: flex; flex-direction: column; gap: 12px; opacity: {{restOp}}; visibility: {{restVis}}; transition: opacity 1.4s ease .25s, visibility 0s linear {{restVisDelay}}">
+<p style="margin: 0; font-size: 14px; line-height: 1.45; color: #4a463f">{{finSpecLine}}</p>
+<div style="display: flex; gap: 8px">
+<button type="button" onClick="{{downloadSvg}}" style="flex: 1 1 auto; height: 50px; padding: 0 10px; white-space: nowrap; border: 2px solid {{accent}}; border-radius: 12px; background: {{accent}}; color: #ffffff; font-size: 15px; font-weight: 600; cursor: pointer">Download carving file</button>
+<button type="button" onClick="{{keepRefining}}" style="flex: 0 0 auto; height: 50px; padding: 0 14px; border: 2px solid #cfc9bd; border-radius: 12px; background: #ffffff; color: #1e1c19; font-size: 15px; font-weight: 500; cursor: pointer">Keep refining</button>
+</div>
+<span aria-live="polite" style="font-size: 14px; color: #3d3a34">{{status}}</span>
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 12px; border-top: 1px solid #e4dfd5">
+<span style="font-size: 15px; font-weight: 600; color: #2f2c27">Make it feel like theirs</span>
+<div role="group" aria-label="Setting" style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{sceneChips}}" as="sc3" hint-placeholder-count="6">
+<button type="button" onClick="{{sc3.pick}}" aria-pressed="{{sc3.pressed}}" style="height: 36px; padding: 0 12px; border: 2px solid {{sc3.bd}}; border-radius: 18px; background: {{sc3.bg}}; color: #1e1c19; font-size: 14px; cursor: pointer">{{sc3.label}}</button>
+</sc-for>
+</div>
+<div style="align-self: flex-start; display: flex; flex-direction: column; align-items: center; gap: 6px; padding-top: 2px">
+<span aria-live="polite" style="font-size: 14px; font-style: italic; color: #4a463f; text-align: center">{{momentLabel}}</span>
+<div style="display: flex; align-items: center; gap: 10px">
+<!--@icon-chips {"label": "Time of day", "list": "todChips", "item": "qtc", "count": 3}-->
+<span aria-hidden="true" style="width: 1px; height: 28px; background: #ddd6c9"></span>
+<!--@icon-chips {"label": "Season", "list": "seasonChips", "item": "qsn", "count": 4}-->
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

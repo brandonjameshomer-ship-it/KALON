@@ -1,0 +1,15 @@
+<span style="font-size: 12px; color: #5d584f">Symmetrical</span>
+<!--@layout-cards {"list": "layoutSym", "item": "zel1", "size": "compact", "count": 2}-->
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px"><span style="font-size: 12px; color: #5d584f">Asymmetrical</span><button type="button" onClick="{{toggleFlip}}" aria-pressed="{{flipPressed}}" style="height: 32px; padding: 0 10px; display: flex; align-items: center; gap: 6px; border: 1px solid {{flipBd}}; border-radius: 8px; background: {{flipBg}}; color: #1e1c19; font-size: 12px; font-weight: 600; cursor: pointer"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3 V21 M9 7 L4 12 L9 17 Z M15 7 L20 12 L15 17 Z" style="fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round"></path></svg><span>{{flipLabel}}</span></button></div>
+<!--@layout-cards {"list": "layoutAsym", "item": "zel2", "size": "compact", "count": 2}-->
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 10px; border-radius: 10px; background: #f4efe4; border: 1px solid #e0d6c2">
+<span style="font-size: 12px; line-height: 1.45; color: #3d3a34">{{adjNote}}</span>
+<label style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; line-height: 1.4; color: #1e1c19; cursor: pointer">
+<input type="checkbox" checked="{{keepAdj}}" onChange="{{toggleKeepAdj}}" style="width: 18px; height: 18px; margin: 0; flex: none; accent-color: {{accent}}">
+<span>Keep my moves and resizes when I switch layouts</span>
+</label>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<button type="button" onClick="{{resetLayout}}" disabled="{{resetDisabled}}" style="height: 34px; padding: 0 12px; border: 1px solid {{accent}}; border-radius: 8px; background: #ffffff; color: {{accent}}; font-size: 12px; font-weight: 600; cursor: pointer; opacity: {{resetOpacity}}">Reset to the layout</button>
+<button type="button" onClick="{{restoreRemoved}}" style="display: {{restoreDisp}}; height: 34px; padding: 0 12px; border: 1px solid #cfc9bd; border-radius: 8px; background: #ffffff; color: #1e1c19; font-size: 12px; cursor: pointer">{{restoreLabel}}</button>
+</div>
+</div>

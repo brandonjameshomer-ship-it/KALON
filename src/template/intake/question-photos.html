@@ -1,0 +1,30 @@
+<sc-if value="{{wIs_photos}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<sc-for list="{{photoZones}}" as="zpz" hint-placeholder-count="1">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: {{zpz.titleDisp}}; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 30px; height: 30px; border-radius: 50%; background: {{accent}}; color: #ffffff; font-size: 16px; font-weight: 600; display: flex; align-items: center; justify-content: center">{{zpz.badge}}</span><span style="font-size: 20px; font-weight: 600">{{zpz.title}}</span><span style="font-size: 15px; color: #5d584f">{{zpz.count}}</span></div>
+<label onDragOver="{{zpz.onDragOver}}" onDragLeave="{{zpz.onDragLeave}}" onDrop="{{zpz.onDragLeave}}" style="position: relative; min-height: {{zpz.minH}}px; box-sizing: border-box; padding: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border: 3px dashed {{zpz.bd}}; border-radius: 16px; background: {{zpz.bg}}; text-align: center; cursor: pointer">
+<input type="file" accept="image/*" multiple="{{yes}}" onChange="{{zpz.onFiles}}" aria-label="{{zpz.aria}}" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer">
+<svg viewBox="0 0 24 24" width="36" height="36" aria-hidden="true"><path d="M12 16 V4 M7 9 L12 4 L17 9 M4 15 V19 Q4 20 5 20 H19 Q20 20 20 19 V15" style="fill: none; stroke: {{accent}}; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+<span style="font-size: 21px; font-weight: 600">{{zpz.prompt}}</span>
+<span style="font-size: 16px; color: #4a463f">JPG or PNG · up to 6 photos</span>
+</label>
+<sc-if value="{{zpz.hasRows}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-wrap: wrap; gap: 14px">
+<sc-for list="{{zpz.rows}}" as="zpq">
+<div style="position: relative; width: 132px; height: 132px; border-radius: 12px; overflow: hidden; background: #efece5; border: 2px solid {{zpq.bd}}">
+<img src="{{zpq.url}}" alt="{{zpq.alt}}" style="width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="display: {{zpq.firstDisp}}; position: absolute; left: 6px; bottom: 6px; max-width: 116px; padding: 3px 8px; border-radius: 5px; background: rgba(20, 18, 15, 0.75); color: #ffffff; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{zpq.firstLabel}}</span>
+<button type="button" onClick="{{zpq.remove}}" aria-label="{{zpq.removeLabel}}" style="position: absolute; right: 6px; top: 6px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: rgba(20, 18, 15, 0.75); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0">
+<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6 L18 18 M18 6 L6 18" style="fill: none; stroke: #ffffff; stroke-width: 2.4; stroke-linecap: round"></path></svg>
+</button>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<!--@check-card {"checked": "zpz.laterOn", "on_change": "zpz.toggleLater", "title": "{{zpz.laterText}}", "note": "{{zpz.laterSub}}", "display": "zpz.laterDisp"}-->
+</div>
+</sc-for>
+</div>
+</sc-if>
+

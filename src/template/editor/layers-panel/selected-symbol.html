@@ -1,0 +1,9 @@
+<span style="font-size: 12px; color: #5d584f">Choose an icon</span>
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{symbolSwap}}" as="ss" hint-placeholder-count="12">
+<button type="button" onClick="{{ss.pick}}" aria-pressed="{{ss.pressed}}" aria-label="{{ss.label}}" title="{{ss.label}}" style="height: 42px; display: flex; align-items: center; justify-content: center; border: 1px solid {{ss.bd}}; border-radius: 8px; background: {{ss.bg}}; cursor: pointer; padding: 0">
+<svg viewBox="0 0 100 100" width="24" height="24" aria-hidden="true"><path d="{{ss.d}}" style="fill: {{ss.fill}}; stroke: {{ss.stroke}}; stroke-width: {{ss.sw}}; fill-rule: evenodd; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+</button>
+</sc-for>
+</div>
+<!--@slider {"label": "Symbol size", "readout": "selSizeLabel", "value": "selSize", "on_change": "onSize", "min": "1", "max": "12", "step": "0.1", "aria_label": "Symbol size in inches"}-->

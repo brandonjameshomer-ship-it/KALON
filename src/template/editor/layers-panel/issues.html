@@ -1,0 +1,16 @@
+<sc-if value="{{hasIssues}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; border-radius: 10px; background: #fbf1df; border: 1px solid #e6c68d">
+<span style="font-size: 13px; font-weight: 600; color: #5e4012">{{issueTitle}}</span>
+<sc-for list="{{issues}}" as="is">
+<button type="button" onClick="{{is.select}}" style="min-height: 28px; padding: 2px 0; border: 0; background: transparent; color: #5e4012; font-size: 12px; line-height: 1.45; text-align: left; cursor: pointer; text-decoration: underline; text-underline-offset: 2px">{{is.text}}</button>
+</sc-for>
+<button type="button" onClick="{{reflow}}" style="align-self: flex-start; height: 32px; padding: 0 10px; border: 1px solid #c99a4a; border-radius: 8px; background: #ffffff; color: #5e4012; font-size: 12px; font-weight: 600; cursor: pointer">Even out vertical spacing</button>
+</div>
+</sc-if>
+<sc-if value="{{noIssues}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 10px; background: #e4efe8; color: #23553f; font-size: 13px; font-weight: 600">
+<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12.5 L10 17 L19 7" style="fill: none; stroke: #23553f; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+<span>Everything will carve beautifully</span>
+</div>
+</sc-if>
+

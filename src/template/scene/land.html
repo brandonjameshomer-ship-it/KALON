@@ -1,0 +1,49 @@
+<svg viewBox="0 0 1440 836" width="1440" height="836" style="position: absolute; left: 0; top: 0; display: block">
+<defs>
+<linearGradient id="lpWater" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" style="stop-color: {{scn.c.w1}}"></stop>
+<stop offset="1" style="stop-color: {{scn.c.w2}}"></stop>
+</linearGradient>
+<linearGradient id="lpGround" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" style="stop-color: {{scn.c.g1}}"></stop>
+<stop offset="1" style="stop-color: {{scn.c.g2}}"></stop>
+</linearGradient>
+<radialGradient id="lpShadow" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0" style="stop-color: #2c3320; stop-opacity: 0.5"></stop>
+<stop offset="0.6" style="stop-color: #2c3320; stop-opacity: 0.22"></stop>
+<stop offset="1" style="stop-color: #2c3320; stop-opacity: 0"></stop>
+</radialGradient>
+</defs>
+<g transform="translate(0 {{landLiftN}})">
+<path d="{{scn.mtD}}" style="fill: {{scn.c.mt1}}"></path>
+<path d="{{scn.snowD}}" style="fill: #f6f3ec; opacity: 0.9"></path>
+<path d="{{scn.mt2D}}" style="fill: {{scn.c.mt2}}"></path>
+<path d="{{scn.seaD}}" style="fill: url(#lpWater)"></path>
+<path d="{{scn.seaLinesD}}" style="fill: {{scn.c.w2}}; opacity: 0.55"></path>
+<path d="{{scn.farD}}" style="fill: {{scn.c.h1}}"></path>
+<path d="{{scn.farLightD}}" style="fill: {{scn.farLight}}; opacity: 0.45"></path>
+<path d="{{scn.mistD}}" style="fill: #ffffff; opacity: 0.36"></path>
+<path d="{{scn.midD}}" style="fill: {{scn.c.h2}}"></path>
+<path d="{{scn.midDarkD}}" style="fill: {{scn.midDark}}; opacity: 0.32"></path>
+<path d="{{scn.midLightD}}" style="fill: {{scn.midLight}}; opacity: 0.42"></path>
+<path d="{{scn.lakeD}}" style="fill: url(#lpWater)"></path>
+<path d="{{scn.pinesD}}" style="fill: {{scn.pine}}"></path>
+<path d="{{scn.pineSnowD}}" style="fill: #f7f9fb"></path>
+<path d="{{scn.hedgeD}}" style="fill: {{scn.hedge}}"></path>
+<path d="{{scn.hedgeDarkD}}" style="fill: {{scn.hedgeDark}}; opacity: 0.45"></path>
+<g transform="{{groundTf}}">
+<path d="{{scn.groundD}}" style="fill: url(#lpGround)"></path>
+<path d="{{scn.groundDarkD}}" style="fill: {{scn.groundDark}}; opacity: 0.26"></path>
+<path d="{{scn.groundLightD}}" style="fill: {{scn.groundLight}}; opacity: 0.36"></path>
+<path d="{{scn.fWhiteD}}" style="fill: {{scn.fcol.white}}"></path>
+<path d="{{scn.fYellowD}}" style="fill: {{scn.fcol.yellow}}"></path>
+<path d="{{scn.fPinkD}}" style="fill: {{scn.fcol.pink}}"></path>
+<path d="{{scn.fLavD}}" style="fill: {{scn.fcol.lav}}"></path>
+<path d="{{scn.fGoldD}}" style="fill: {{scn.fcol.gold}}"></path>
+<path d="{{scn.fRustD}}" style="fill: {{scn.fcol.rust}}"></path>
+<path d="{{scn.fCenterD}}" style="fill: {{scn.fcol.center}}; opacity: 0.9"></path>
+</g>
+<ellipse cx="{{scn.treeShX}}" cy="{{scn.treeShY}}" rx="{{scn.treeShRx}}" ry="16" style="display: {{scn.treeDisp}}; fill: url(#lpShadow); opacity: 0.7"></ellipse>
+</g>
+<ellipse cx="{{lsShadowX}}" cy="{{lsShadowY}}" rx="{{lsShadowRx}}" ry="{{lsShadowRy}}" style="fill: url(#lpShadow)"></ellipse>
+</svg>

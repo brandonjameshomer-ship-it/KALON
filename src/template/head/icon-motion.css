@@ -1,0 +1,43 @@
+.hs-ic path{transform-box:fill-box;transform-origin:center}
+.hs-ic .hsIc-leaf{transform-origin:0% 100%}
+.hs-ic .hsIc-blow{transform-origin:50% 90%}
+.hs-ic .hsIc-wind,.hs-ic .hsIc-snow{opacity:0}
+.hs-ic:hover .hsIc-rise,.hs-ic:focus-visible .hsIc-rise{animation:hsIcRise 1.3s cubic-bezier(.2,.75,.25,1) both}
+.hs-ic:hover .hsIc-riseSpin,.hs-ic:focus-visible .hsIc-riseSpin{animation:hsIcRise 1.3s cubic-bezier(.2,.75,.25,1) both,hsIcRiseSpin 9s linear 1.3s infinite}
+.hs-ic:hover .hsIc-rip1,.hs-ic:focus-visible .hsIc-rip1{animation:hsIcRip 2.2s ease-in-out infinite}
+.hs-ic:hover .hsIc-rip2,.hs-ic:focus-visible .hsIc-rip2{animation:hsIcRip 2.2s ease-in-out -1.1s infinite}
+.hs-ic .hsIc-snow2{opacity:0}
+.hs-ic:hover .hsIc-snow2,.hs-ic:focus-visible .hsIc-snow2{animation:hsIcSnow 2.4s linear -1.2s infinite}
+.hs-ic:hover .hsIc-set,.hs-ic:focus-visible .hsIc-set{animation:hsIcSet 1.5s cubic-bezier(.45,0,.3,1) both}
+.hs-ic:hover .hsIc-grow,.hs-ic:focus-visible .hsIc-grow{animation:hsIcGrow .9s cubic-bezier(.2,.8,.25,1.2) both}
+.hs-ic:hover .hsIc-rays,.hs-ic:focus-visible .hsIc-rays{animation:hsIcRays 1.1s cubic-bezier(.2,.8,.25,1) both,hsIcRaysSpin 10s linear 1.1s infinite}
+.hs-ic:hover .hsIc-tw1,.hs-ic:focus-visible .hsIc-tw1{animation:hsIcTw 2.8s ease-in-out infinite}
+.hs-ic:hover .hsIc-tw2,.hs-ic:focus-visible .hsIc-tw2{animation:hsIcTw 2.8s ease-in-out 1.1s infinite}
+.hs-ic:hover .hsIc-bloom,.hs-ic:focus-visible .hsIc-bloom{animation:hsIcBloom 1.1s cubic-bezier(.2,.8,.25,1.15) both,hsIcSway 3.2s ease-in-out 1.1s infinite}
+.hs-ic:hover .hsIc-bud,.hs-ic:focus-visible .hsIc-bud{animation:hsIcBud .9s cubic-bezier(.2,.8,.25,1.4) .25s both}
+.hs-ic:hover .hsIc-leaf,.hs-ic:focus-visible .hsIc-leaf{animation:hsIcLeaf .8s cubic-bezier(.2,.8,.25,1) both}
+.hs-ic:hover .hsIc-sun,.hs-ic:focus-visible .hsIc-sun{animation:hsIcSun .8s cubic-bezier(.2,.8,.25,1) both}
+.hs-ic:hover .hsIc-blow,.hs-ic:focus-visible .hsIc-blow{animation:hsIcBlow 1.8s ease-in-out infinite}
+.hs-ic:hover .hsIc-wind,.hs-ic:focus-visible .hsIc-wind{animation:hsIcWind 1.8s ease-in-out infinite}
+.hs-ic:hover .hsIc-sunspin,.hs-ic:focus-visible .hsIc-sunspin{animation:hsIcFlake 12s linear infinite}
+.hs-ic:hover .hsIc-flake,.hs-ic:focus-visible .hsIc-flake{animation:hsIcFlake 5s linear infinite}
+.hs-ic:hover .hsIc-snow,.hs-ic:focus-visible .hsIc-snow{animation:hsIcSnow 2.4s linear infinite}
+@keyframes hsIcRise{0%{transform:translateY(0)}100%{transform:translateY(-3.5px)}}
+@keyframes hsIcRiseSpin{0%{transform:translateY(-3.5px) rotate(0deg)}100%{transform:translateY(-3.5px) rotate(360deg)}}
+@keyframes hsIcRip{0%,100%{transform:translateX(0) scaleX(1)}50%{transform:translateX(1.2px) scaleX(.82)}}
+@keyframes hsIcSway{0%,100%{transform:scale(1) rotate(0deg)}45%{transform:scale(1.1) rotate(28deg)}}
+@keyframes hsIcRaysSpin{0%{transform:scale(1.1) rotate(0deg)}100%{transform:scale(1.1) rotate(360deg)}}
+@keyframes hsIcPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@keyframes hsIcSet{0%{transform:translateY(0)}100%{transform:translateY(5.5px)}}
+@keyframes hsIcGrow{0%{transform:scale(.8)}100%{transform:scale(1.22)}}
+@keyframes hsIcRays{0%{transform:scale(.85) rotate(-25deg);opacity:.4}100%{transform:scale(1.1) rotate(0deg);opacity:1}}
+@keyframes hsIcTw{0%,100%{transform:scale(1);opacity:1}35%{transform:scale(.35);opacity:.3}60%{transform:scale(1.35);opacity:1}}
+@keyframes hsIcBloom{0%{transform:scale(.3) rotate(-50deg);opacity:.3}70%{transform:scale(1.08) rotate(4deg);opacity:1}100%{transform:scale(1) rotate(0deg)}}
+@keyframes hsIcBud{0%{transform:scale(0)}100%{transform:scale(1)}}
+@keyframes hsIcLeaf{0%{transform:scale(1)}100%{transform:scale(1.18)}}
+@keyframes hsIcSun{0%{transform:scale(1)}100%{transform:scale(1.14)}}
+@keyframes hsIcBlow{0%,100%{transform:translate(0,0) rotate(0deg)}25%{transform:translate(2.2px,-1.6px) rotate(16deg)}55%{transform:translate(-1px,-.6px) rotate(-9deg)}80%{transform:translate(1.4px,.6px) rotate(8deg)}}
+@keyframes hsIcWind{0%{transform:translateX(-3px);opacity:0}40%{opacity:.9}100%{transform:translateX(4px);opacity:0}}
+@keyframes hsIcFlake{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes hsIcSnow{0%{transform:translateY(-1px);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateY(24px);opacity:0}}
+@media (prefers-reduced-motion: reduce){.hs-ic path{animation:none!important}}

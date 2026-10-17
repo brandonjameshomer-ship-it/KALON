@@ -1,0 +1,8 @@
+<div style="display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{typeCards}}" as="zety" hint-placeholder-count="5">
+<button type="button" onClick="{{zety.pick}}" aria-pressed="{{zety.pressed}}" title="{{zety.desc}}" style="display: flex; gap: 10px; align-items: center; padding: 6px 10px; border: 1px solid {{zety.bd}}; border-radius: 10px; background: {{zety.bg}}; text-align: left; cursor: pointer; color: #1e1c19">
+<svg viewBox="0 0 80 50" width="48" height="30" aria-hidden="true" style="flex-shrink: 0"><path d="M4 44 H76" style="fill: none; stroke: #9d968a; stroke-width: 1.5; stroke-linecap: round"></path><path d="{{zety.icon}}" style="fill: {{zety.fill}}"></path></svg>
+<span style="display: flex; flex-direction: column; gap: 1px; min-width: 0"><span style="font-size: 13px; font-weight: 600">{{zety.label}}</span><span style="font-size: 11px; color: #5d584f; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{zety.size}}</span></span>
+</button>
+</sc-for>
+</div>

@@ -1,0 +1,26 @@
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{graniteCards}}" as="zegr" hint-placeholder-count="5">
+<button type="button" onClick="{{zegr.pick}}" aria-pressed="{{zegr.pressed}}" aria-label="{{zegr.label}}" title="{{zegr.label}}: {{zegr.note}}" style="padding: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 0; background: transparent; cursor: pointer">
+<span style="width: 42px; height: 42px; border-radius: 50%; border: 3px solid {{zegr.bd}}; background: {{zegr.swatch}}"></span>
+<span style="font-size: 10px; line-height: 1.15; text-align: center; color: #3d3a34">{{zegr.label}}</span>
+</button>
+</sc-for>
+</div>
+<div style="display: {{baseShowDisp}}; flex-direction: column; gap: 8px; padding-top: 10px; border-top: 1px solid #ebe7de">
+<span style="margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5d584f">Base</span>
+<!--@stepper {"label": "Extends past the stone", "value": "baseOverLabel", "minus": "baseOverMinus", "minus_label": "Narrower base", "plus": "baseOverPlus", "plus_label": "Wider base", "size": "compact"}-->
+<div style="display: {{baseDepthDisp}}; flex-direction: column; gap: 8px">
+<!--@stepper {"label": "Depth, front to back", "value": "baseDepthLabel", "minus": "baseDepthMinus", "minus_label": "Shallower base", "plus": "baseDepthPlus", "plus_label": "Deeper base", "size": "compact"}-->
+</div>
+<div style="display: {{baseSizeDisp}}; flex-direction: column; gap: 8px">
+<!--@stepper {"label": "Height", "value": "baseHtLabel", "minus": "baseHtMinus", "minus_label": "Lower base", "plus": "baseHtPlus", "plus_label": "Taller base", "size": "compact"}-->
+</div>
+<div style="display: {{baseOnDisp}}; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; color: #5d584f">Base granite</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{baseMats}}" as="zebg" hint-placeholder-count="6">
+<button type="button" onClick="{{zebg.pick}}" aria-pressed="{{zebg.pressed}}" aria-label="Base: {{zebg.label}}" title="{{zebg.label}}" style="width: 30px; height: 30px; padding: 0; border-radius: 50%; border: 3px solid {{zebg.ring}}; background: {{zebg.swatch}}; cursor: pointer"></button>
+</sc-for>
+</div>
+</div>
+</div>

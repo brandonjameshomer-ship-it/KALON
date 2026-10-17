@@ -1,0 +1,15 @@
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 0">
+<div style="display: flex; flex-direction: column; gap: 1px; min-width: 0"><span style="margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5d584f">{{selKind}}</span><span style="font-size: 16px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{selName}}</span></div>
+<div style="display: flex; gap: 6px; flex: none">
+<button type="button" onClick="{{duplicate}}" style="height: 32px; padding: 0 10px; border: 1px solid #d3cdc1; border-radius: 8px; background: #ffffff; font-size: 12px; color: #1e1c19; cursor: pointer">Duplicate</button>
+<button type="button" onClick="{{askDelete}}" style="height: 32px; padding: 0 10px; border: 1px solid #e3c1bb; border-radius: 8px; background: #ffffff; font-size: 12px; color: #9a2f22; cursor: pointer">Delete</button>
+</div>
+</div>
+<sc-if value="{{selHasIssue}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; padding: 10px 12px; border-radius: 8px; background: #fbf1df; border: 1px solid #e6c68d">
+<sc-for list="{{selIssues}}" as="si">
+<span style="font-size: 12px; line-height: 1.45; color: #5e4012">{{si.text}}</span>
+</sc-for>
+<button type="button" onClick="{{fitSel}}" style="align-self: flex-start; height: 32px; padding: 0 10px; border: 1px solid #c99a4a; border-radius: 8px; background: #ffffff; color: #5e4012; font-size: 12px; font-weight: 600; cursor: pointer">Fit inside the margins</button>
+</div>
+</sc-if>
