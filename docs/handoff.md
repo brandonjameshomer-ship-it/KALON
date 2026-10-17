@@ -1,3 +1,6 @@
+> Historical note from the prototype export. The `source/` pipeline described below was replaced by `src/`.
+> For the current layout, build and test steps, see [AGENTS.md](../AGENTS.md).
+
 # Headstone Design Lab: handoff for Claude Code
 
 This folder is the KALON Headstone Design Lab prototype, exported from the Claude Design artifact
